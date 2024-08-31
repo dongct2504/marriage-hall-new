@@ -11,6 +11,15 @@ namespace MarriageHall.DLL
         private SqlConnection conn;
         private DataTable dt;
 
+        private static DataProvider instance;
+        public static DataProvider Instance
+        {
+            get { if (instance == null) instance = new DataProvider(); return DataProvider.instance; }
+            private set { DataProvider.instance = value; }
+        }
+
+        private DataProvider() { }
+
         private void Connected()
         {
             string connectionString = "Data Source=.;Initial Catalog=Demo;User ID=sa; Password=123456aA";

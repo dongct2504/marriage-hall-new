@@ -1,6 +1,7 @@
 ﻿using MarriageHall.DLL;
 using MarriageHall.DTO;
 using System.Data;
+using System.Windows.Forms;
 
 namespace MarriageHall.BLL
 {
@@ -31,14 +32,14 @@ namespace MarriageHall.BLL
 
         public bool InsertCategory(Category category)
         {
-            string query = $"INSERT INTO Categories ('Name') VALUES({category.Name})";
+            string query = $"INSERT INTO Categories (Name) VALUES (N'{category.Name}')";
 
             return DataProvider.Instance.RunQuery(query);
         }
 
         public bool UpdateCategory(Category category)
         {
-            string query = $"UPDATE Categories SET Name = {category.Name} WHERE Id = {category.Id}";
+            string query = $"UPDATE Categories SET Name = N'{category.Name}' WHERE Id = {category.Id}";
 
             return DataProvider.Instance.RunQuery(query);
         }
@@ -48,6 +49,16 @@ namespace MarriageHall.BLL
             string query = $"DELETE Categories WHERE Id = {id}";
 
             return DataProvider.Instance.RunQuery(query);
+        }
+
+        public bool Validate(Category category)
+        {
+            if (category.Name.Equals(""))
+            {
+                MessageBox.Show("Tên thể loại không được để trống", "Thông báo");
+                return false;
+            }
+            return true;
         }
     }
 }

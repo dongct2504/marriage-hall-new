@@ -22,7 +22,7 @@ namespace MarriageHall.DLL
 
         private void Connected()
         {
-            string connectionString = "Data Source=.;Initial Catalog=Demo;User ID=sa; Password=123456aA";
+            string connectionString = "Data Source=.;Initial Catalog=MarriageHall;User ID=sa; Password=123456aA";
             try
             {
                 if (conn == null)

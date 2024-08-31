@@ -16,5 +16,13 @@ namespace MarriageHall.GUI
         {
             InitializeComponent();
         }
+
+        private void adminToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmAdmin frmAdmin = new FrmAdmin();
+            Hide();
+            frmAdmin.ShowDialog();
+            Show();
+        }
     }
 }

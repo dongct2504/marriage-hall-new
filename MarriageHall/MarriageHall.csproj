@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DLL\DataProvider.cs" />
     <Compile Include="GUI\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,7 +79,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BLL\" />
-    <Folder Include="DLL\" />
     <Folder Include="DTO\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

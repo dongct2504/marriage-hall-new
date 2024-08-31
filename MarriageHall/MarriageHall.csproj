@@ -47,6 +47,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DLL\DataProvider.cs" />
+    <Compile Include="DTO\Enums\EnumExtension.cs" />
+    <Compile Include="DTO\Enums\GenderEnum.cs" />
+    <Compile Include="DTO\Enums\PermissionEnum.cs" />
+    <Compile Include="DTO\Enums\ShiftEnum.cs" />
+    <Compile Include="DTO\Enums\StatusEnum.cs" />
     <Compile Include="GUI\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,7 +84,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BLL\" />
-    <Folder Include="DTO\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

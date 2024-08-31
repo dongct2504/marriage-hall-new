@@ -47,11 +47,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DLL\DataProvider.cs" />
+    <Compile Include="DTO\Account.cs" />
+    <Compile Include="DTO\Booking.cs" />
+    <Compile Include="DTO\BookingDetail.cs" />
+    <Compile Include="DTO\Category.cs" />
+    <Compile Include="DTO\Customer.cs" />
     <Compile Include="DTO\Enums\EnumExtension.cs" />
     <Compile Include="DTO\Enums\GenderEnum.cs" />
     <Compile Include="DTO\Enums\PermissionEnum.cs" />
     <Compile Include="DTO\Enums\ShiftEnum.cs" />
     <Compile Include="DTO\Enums\StatusEnum.cs" />
+    <Compile Include="DTO\Hall.cs" />
+    <Compile Include="DTO\Item.cs" />
     <Compile Include="GUI\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>

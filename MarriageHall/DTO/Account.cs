@@ -9,8 +9,7 @@ namespace MarriageHall.DTO
         public string Phone { get; set; }
         public string UserName { get; set; }
         public GenderEnum Gender { get; set; }
-        public byte[] PasswordHash { get; set; }
-        public byte[] PasswordSalt { get; set; }
+        public string Password { get; set; } = "";
         public PermissionEnum Permission { get; set; }
     }
 }

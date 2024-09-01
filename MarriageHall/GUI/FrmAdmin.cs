@@ -1,5 +1,6 @@
 ﻿using MarriageHall.BLL;
 using MarriageHall.DTO;
+using MarriageHall.DTO.Enums;
 using System;
 using System.Windows.Forms;
 
@@ -18,6 +19,7 @@ namespace MarriageHall.GUI
             LoadListCategory();
             LoadListItem();
             LoadListHall();
+            LoadListAccount();
         }
 
         #region category_and_item
@@ -30,7 +32,10 @@ namespace MarriageHall.GUI
 
         private void GetCategory()
         {
-            category.Id = (int)cboCategory.SelectedValue;
+            if (cboCategory.Items.Count > 0)
+            {
+                category.Id = (int)cboCategory.SelectedValue;
+            }
             category.Name = txtCategoryName.Text;
         }
 
@@ -81,6 +86,13 @@ namespace MarriageHall.GUI
             btnDeleteItem.Enabled = true;
             btnSaveItem.Enabled = true;
             cboCategory.Enabled = true;
+        }
+
+        private void ClearItem()
+        {
+            txtItemId.Clear();
+            txtItemName.Clear();
+            nmItemPrice.Value = 0;
         }
 
         private void btnDeleteCategory_Click(object sender, EventArgs e)
@@ -196,9 +208,6 @@ namespace MarriageHall.GUI
                     MessageBox.Show("Xóa sản phẩm thành công", "Thông báo");
                 }
             }
-            txtItemId.Clear();
-            txtItemName.Clear();
-            nmItemPrice.Value = 0;
             LoadListItem();
         }
 
@@ -216,9 +225,7 @@ namespace MarriageHall.GUI
             btnSaveCategory.Enabled = false;
             btnEditItem.Enabled = false;
             btnDeleteItem.Enabled = false;
-            txtItemId.Clear();
-            txtItemName.Clear();
-            nmItemPrice.Value = 0;
+            ClearItem();
         }
 
         private void btnEditItem_Click(object sender, EventArgs e)
@@ -309,6 +316,14 @@ namespace MarriageHall.GUI
             btnDeleteHall.Enabled = true;
         }
 
+        private void ClearHall()
+        {
+            txtHallId.Clear();
+            txtHallName.Clear();
+            nmHallNumberOfTables.Value = 0;
+            nmHallPrice.Value = 0;
+        }
+
         private void bthDeleteHall_Click(object sender, EventArgs e)
         {
             GetHall();
@@ -319,10 +334,7 @@ namespace MarriageHall.GUI
                     MessageBox.Show("Xóa sảnh cưới thành công", "Thông báo");
                 }
             }
-            txtHallId.Clear();
-            txtHallName.Clear();
-            nmHallNumberOfTables.Value = 0;
-            nmHallPrice.Value = 0;
+            ClearHall();
             LoadListHall();
         }
 
@@ -336,10 +348,7 @@ namespace MarriageHall.GUI
             isAddHall = true;
             btnEditHall.Enabled = false;
             btnDeleteHall.Enabled = false;
-            txtHallId.Clear();
-            txtHallName.Clear();
-            nmHallNumberOfTables.Value = 0;
-            nmHallPrice.Value = 0;
+            ClearHall();
             txtHallName.Focus();
         }
 
@@ -404,6 +413,158 @@ namespace MarriageHall.GUI
             txtHallName.Text = row.Cells["Name"].Value.ToString();
             nmHallNumberOfTables.Value = int.Parse(row.Cells["NumberOfTables"].Value.ToString());
             nmHallPrice.Value = (decimal)row.Cells["Price"].Value;
+        }
+        #endregion
+
+        #region account
+        bool isAddAccount = false;
+        bool isEditAccount = false;
+        Account account = new Account();
+
+        private void GetAccount()
+        {
+            bool hasAccountId = int.TryParse(txtAccountId.Text, out int accountId);
+            if (hasAccountId)
+            {
+                account.Id = accountId;
+            }
+            account.UserName = txtAccountUserName.Text;
+            account.Name = txtAccountName.Text;
+            account.Phone = txtAccountPhone.Text;
+            account.Gender = (GenderEnum)cboAccountGender.SelectedValue;
+            account.Permission = (PermissionEnum)cboAccountPermission.SelectedValue;
+        }
+
+        private void LoadListAccount()
+        {
+            dgvAccount.DataSource = BLLAccount.Instance.GetListAccount();
+            cboAccountGender.DataSource = EnumExtension.GetListDescriptions<GenderEnum>();
+            cboAccountGender.ValueMember = "Key";
+            cboAccountGender.DisplayMember = "Value";
+            cboAccountPermission.DataSource = EnumExtension.GetListDescriptions<PermissionEnum>();
+            cboAccountPermission.ValueMember = "Key";
+            cboAccountPermission.DisplayMember = "Value";
+        }
+
+        private void ResetStateAccount()
+        {
+            isAddAccount = false;
+            isEditAccount = false;
+            btnAddAccount.Enabled = true;
+            btnEditAccount.Enabled = true;
+            btnDeleteAccount.Enabled = true;
+            txtAccountUserName.ReadOnly = true;
+        }
+
+        private void ClearAccount()
+        {
+            txtAccountId.Clear();
+            txtAccountUserName.Clear();
+            txtAccountName.Clear();
+            txtAccountPhone.Clear();
+        }
+
+        private void btnDeleteAccount_Click(object sender, EventArgs e)
+        {
+            GetAccount ();
+            if (MessageBox.Show("Bạn có chắc muốn xóa?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                if (BLLAccount.Instance.DeleteAccount(account.Id))
+                {
+                    MessageBox.Show("Xóa tài khoản thành công", "Thông báo");
+                }
+            }
+            ClearAccount();
+            LoadListAccount();
+        }
+
+        private void btnAddAccount_Click(object sender, EventArgs e)
+        {
+            if (isAddAccount)
+            {
+                ResetStateAccount();
+                return;
+            }
+            isAddAccount = true;
+            btnEditAccount.Enabled = false;
+            btnDeleteAccount.Enabled = false;
+            ClearAccount();
+            txtAccountUserName.ReadOnly = false;
+            txtAccountUserName.Focus();
+        }
+
+        private void btnEditAccount_Click(object sender, EventArgs e)
+        {
+            if (isEditAccount)
+            {
+                ResetStateAccount();
+                return;
+            }
+            isEditAccount = true;
+            btnAddAccount.Enabled = false;
+            btnDeleteAccount.Enabled = false;
+        }
+
+        private void btnSaveAccount_Click(object sender, EventArgs e)
+        {
+            GetAccount();
+            try
+            {
+                if (isAddAccount)
+                {
+                    if (BLLAccount.Instance.Validate(account))
+                    {
+                        if (BLLAccount.Instance.InsertAccount(account))
+                        {
+                            MessageBox.Show("Thêm tài khoản thành công", "Thông báo");
+                        }
+                    }
+                }
+                if (isEditAccount)
+                {
+                    if (BLLAccount.Instance.Validate(account))
+                    {
+                        if (BLLAccount.Instance.UpdateAccount(account))
+                        {
+                            MessageBox.Show("Sửa tài khoản thành công", "Thông báo");
+                        }
+                    }
+                }
+                ResetStateAccount();
+                LoadListAccount();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvAccount_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var row = dgvAccount.SelectedCells[0].OwningRow;
+            if (!isAddAccount && !isEditAccount)
+            {
+                txtAccountId.Text = row.Cells["Id"].Value.ToString();
+                txtAccountUserName.Text = row.Cells["UserName"].Value.ToString();
+            }
+            txtAccountName.Text = row.Cells["Name"].Value.ToString();
+            txtAccountPhone.Text = row.Cells["Phone"].Value.ToString();
+            cboAccountGender.SelectedValue = int.Parse(row.Cells["Gender"].Value.ToString());
+            cboAccountPermission.SelectedValue = int.Parse(row.Cells["Permission"].Value.ToString());
+        }
+
+        private void txtAccountSearchName_TextChanged(object sender, EventArgs e)
+        {
+            dgvAccount.DataSource = BLLAccount.Instance.SearchAccountByName(txtAccountSearchName.Text);
+        }
+
+        private void btnResetPassword_Click(object sender, EventArgs e)
+        {
+            GetAccount();
+            if (BLLAccount.Instance.ChangePassword(account.Id, "1"))
+            {
+                MessageBox.Show($"Reset mật khẩu tài khoản {account.UserName} thành công", "Thông báo");
+            }
         }
         #endregion
     }

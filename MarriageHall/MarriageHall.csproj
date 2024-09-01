@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\BLLAccount.cs" />
     <Compile Include="BLL\BLLCategory.cs" />
     <Compile Include="BLL\BLLHall.cs" />
     <Compile Include="BLL\BLLItem.cs" />

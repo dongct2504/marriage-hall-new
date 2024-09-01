@@ -67,7 +67,7 @@
             this.nmHallPrice = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
             this.panel12 = new System.Windows.Forms.Panel();
-            this.nmHallNumberOfTable = new System.Windows.Forms.NumericUpDown();
+            this.nmHallNumberOfTables = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
             this.txtHallName = new System.Windows.Forms.TextBox();
@@ -77,7 +77,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.btnSaveHall = new System.Windows.Forms.Button();
             this.btnEditHall = new System.Windows.Forms.Button();
-            this.bthDeleteHall = new System.Windows.Forms.Button();
+            this.btnDeleteHall = new System.Windows.Forms.Button();
             this.btnAddHall = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dgvHall = new System.Windows.Forms.DataGridView();
@@ -104,7 +104,7 @@
             this.panel13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmHallPrice)).BeginInit();
             this.panel12.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nmHallNumberOfTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmHallNumberOfTables)).BeginInit();
             this.panel11.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -462,7 +462,7 @@
             this.panel9.Controls.Add(this.panel10);
             this.panel9.Controls.Add(this.btnSaveHall);
             this.panel9.Controls.Add(this.btnEditHall);
-            this.panel9.Controls.Add(this.bthDeleteHall);
+            this.panel9.Controls.Add(this.btnDeleteHall);
             this.panel9.Controls.Add(this.btnAddHall);
             this.panel9.Location = new System.Drawing.Point(422, 83);
             this.panel9.Name = "panel9";
@@ -481,6 +481,11 @@
             // nmHallPrice
             // 
             this.nmHallPrice.Location = new System.Drawing.Point(91, 14);
+            this.nmHallPrice.Maximum = new decimal(new int[] {
+            100000000,
+            0,
+            0,
+            0});
             this.nmHallPrice.Name = "nmHallPrice";
             this.nmHallPrice.Size = new System.Drawing.Size(186, 26);
             this.nmHallPrice.TabIndex = 1;
@@ -497,20 +502,25 @@
             // 
             // panel12
             // 
-            this.panel12.Controls.Add(this.nmHallNumberOfTable);
+            this.panel12.Controls.Add(this.nmHallNumberOfTables);
             this.panel12.Controls.Add(this.label10);
             this.panel12.Location = new System.Drawing.Point(20, 146);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(290, 48);
             this.panel12.TabIndex = 2;
             // 
-            // nmHallNumberOfTable
+            // nmHallNumberOfTables
             // 
-            this.nmHallNumberOfTable.Location = new System.Drawing.Point(91, 14);
-            this.nmHallNumberOfTable.Name = "nmHallNumberOfTable";
-            this.nmHallNumberOfTable.Size = new System.Drawing.Size(186, 26);
-            this.nmHallNumberOfTable.TabIndex = 1;
-            this.nmHallNumberOfTable.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.nmHallNumberOfTables.Location = new System.Drawing.Point(91, 14);
+            this.nmHallNumberOfTables.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.nmHallNumberOfTables.Name = "nmHallNumberOfTables";
+            this.nmHallNumberOfTables.Size = new System.Drawing.Size(186, 26);
+            this.nmHallNumberOfTables.TabIndex = 1;
+            this.nmHallNumberOfTables.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label10
             // 
@@ -580,6 +590,7 @@
             this.btnSaveHall.TabIndex = 3;
             this.btnSaveHall.Text = "Lưu";
             this.btnSaveHall.UseVisualStyleBackColor = true;
+            this.btnSaveHall.Click += new System.EventHandler(this.btnSaveHall_Click);
             // 
             // btnEditHall
             // 
@@ -589,15 +600,17 @@
             this.btnEditHall.TabIndex = 2;
             this.btnEditHall.Text = "Sửa";
             this.btnEditHall.UseVisualStyleBackColor = true;
+            this.btnEditHall.Click += new System.EventHandler(this.btnEditHall_Click);
             // 
-            // bthDeleteHall
+            // btnDeleteHall
             // 
-            this.bthDeleteHall.Location = new System.Drawing.Point(197, 286);
-            this.bthDeleteHall.Name = "bthDeleteHall";
-            this.bthDeleteHall.Size = new System.Drawing.Size(100, 40);
-            this.bthDeleteHall.TabIndex = 1;
-            this.bthDeleteHall.Text = "Xóa";
-            this.bthDeleteHall.UseVisualStyleBackColor = true;
+            this.btnDeleteHall.Location = new System.Drawing.Point(197, 286);
+            this.btnDeleteHall.Name = "btnDeleteHall";
+            this.btnDeleteHall.Size = new System.Drawing.Size(100, 40);
+            this.btnDeleteHall.TabIndex = 1;
+            this.btnDeleteHall.Text = "Xóa";
+            this.btnDeleteHall.UseVisualStyleBackColor = true;
+            this.btnDeleteHall.Click += new System.EventHandler(this.bthDeleteHall_Click);
             // 
             // btnAddHall
             // 
@@ -607,6 +620,7 @@
             this.btnAddHall.TabIndex = 0;
             this.btnAddHall.Text = "Thêm";
             this.btnAddHall.UseVisualStyleBackColor = true;
+            this.btnAddHall.Click += new System.EventHandler(this.btnAddHall_Click);
             // 
             // panel4
             // 
@@ -625,6 +639,7 @@
             this.dgvHall.RowTemplate.Height = 28;
             this.dgvHall.Size = new System.Drawing.Size(413, 462);
             this.dgvHall.TabIndex = 0;
+            this.dgvHall.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHall_CellContentClick);
             // 
             // tabPage4
             // 
@@ -687,6 +702,7 @@
             this.txtHallSearchName.Name = "txtHallSearchName";
             this.txtHallSearchName.Size = new System.Drawing.Size(186, 26);
             this.txtHallSearchName.TabIndex = 13;
+            this.txtHallSearchName.TextChanged += new System.EventHandler(this.txtHallSearchName_TextChanged);
             // 
             // FrmAdmin
             // 
@@ -725,7 +741,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nmHallPrice)).EndInit();
             this.panel12.ResumeLayout(false);
             this.panel12.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nmHallNumberOfTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmHallNumberOfTables)).EndInit();
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
             this.panel10.ResumeLayout(false);
@@ -782,7 +798,7 @@
         private System.Windows.Forms.Button btnAddHall;
         private System.Windows.Forms.Button btnSaveHall;
         private System.Windows.Forms.Button btnEditHall;
-        private System.Windows.Forms.Button bthDeleteHall;
+        private System.Windows.Forms.Button btnDeleteHall;
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel panel12;
@@ -794,7 +810,7 @@
         private System.Windows.Forms.TextBox txtHallId;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.NumericUpDown nmHallPrice;
-        private System.Windows.Forms.NumericUpDown nmHallNumberOfTable;
+        private System.Windows.Forms.NumericUpDown nmHallNumberOfTables;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtItemSearchName;
         private System.Windows.Forms.Panel panel14;

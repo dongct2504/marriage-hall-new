@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL\BLLCategory.cs" />
+    <Compile Include="BLL\BLLHall.cs" />
     <Compile Include="BLL\BLLItem.cs" />
     <Compile Include="DLL\DataProvider.cs" />
     <Compile Include="DTO\Account.cs" />

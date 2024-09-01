@@ -25,11 +25,7 @@ namespace MarriageHall.GUI
         #region methods
         private void GetCategory()
         {
-            bool hasCategoryId = int.TryParse(txtCategoryId.Text, out int categoryId);
-            if (hasCategoryId)
-            {
-                category.Id = categoryId;
-            }
+            category.Id = (int)cboCategory.SelectedValue;
             category.Name = txtCategoryName.Text;
         }
 
@@ -40,9 +36,8 @@ namespace MarriageHall.GUI
             {
                 item.Id = itemId;
             }
-            item.Name = txtItemName.Text; 
-            DataRow row = ((DataTable)cboItemCategory.DataSource).Rows[cboItemCategory.SelectedIndex];
-            item.CategoryId = (int)row["Id"];
+            item.Name = txtItemName.Text;
+            item.CategoryId = (int)cboItemCategory.SelectedValue;
             item.Price = nmItemPrice.Value;
         }
 
@@ -62,11 +57,11 @@ namespace MarriageHall.GUI
 
         private void LoadListItem()
         {
-            if (cboCategory.SelectedIndex == -1) return;
-            dgvItem.DataSource = BLLItem.Instance.GetItemByCategoryId(int.Parse(cboCategory.SelectedValue.ToString()));
+            GetCategory();
+            dgvItem.DataSource = BLLItem.Instance.GetItemByCategoryId(category.Id);
         }
 
-        private void ResetState()
+        private void ResetStateCategoryAndItem()
         {
             isAddCategory = false;
             isEditCategory = false;
@@ -87,7 +82,7 @@ namespace MarriageHall.GUI
         #region events
         private void FrmAdmin_Load(object sender, EventArgs e)
         {
-            ResetState();
+            ResetStateCategoryAndItem();
             LoadListCategory();
             LoadListItem();
         }
@@ -110,7 +105,7 @@ namespace MarriageHall.GUI
         {
             if (isAddCategory)
             {
-                ResetState();
+                ResetStateCategoryAndItem();
                 return;
             }
             isAddCategory = true;
@@ -130,7 +125,7 @@ namespace MarriageHall.GUI
         {
             if (isEditCategory)
             {
-                ResetState();
+                ResetStateCategoryAndItem();
                 return;
             }
             isEditCategory = true;
@@ -158,7 +153,7 @@ namespace MarriageHall.GUI
                             MessageBox.Show("Thêm thể loại thành công", "Thông báo");
                         }
                     }
-                    ResetState();
+                    ResetStateCategoryAndItem();
                 }
                 if (isEditCategory)
                 {
@@ -169,7 +164,7 @@ namespace MarriageHall.GUI
                             MessageBox.Show("Sửa thể loại thành công", "Thông báo");
                         }
                     }
-                    ResetState();
+                    ResetStateCategoryAndItem();
                 }
                 LoadListCategory();
             }
@@ -190,7 +185,7 @@ namespace MarriageHall.GUI
             txtItemId.Text = row.Cells["Id"].Value.ToString();
             txtItemName.Text = row.Cells["Name"].Value.ToString();
             nmItemPrice.Value = (decimal)row.Cells["Price"].Value;
-            cboItemCategory.SelectedIndex = cboCategory.SelectedIndex;
+            cboItemCategory.SelectedValue = row.Cells["categoryId"].Value;
         }
 
         private void btnDeleteItem_Click(object sender, EventArgs e)
@@ -200,7 +195,7 @@ namespace MarriageHall.GUI
             {
                 if (BLLItem.Instance.DeleteItem(item.Id))
                 {
-                    MessageBox.Show("Xoá sản phẩm thành công", "Thông báo");
+                    MessageBox.Show("Xóa sản phẩm thành công", "Thông báo");
                 }
             }
             LoadListItem();
@@ -215,7 +210,7 @@ namespace MarriageHall.GUI
         {
             if (isAddItem)
             {
-                ResetState();
+                ResetStateCategoryAndItem();
                 return;
             }
             isAddItem = true;
@@ -234,7 +229,7 @@ namespace MarriageHall.GUI
         {
             if (isEditItem)
             {
-                ResetState();
+                ResetStateCategoryAndItem();
                 return;
             }
             isEditItem = true;
@@ -260,7 +255,7 @@ namespace MarriageHall.GUI
                             MessageBox.Show("Thêm sản phẩm thành công", "Thông báo");
                         }
                     }
-                    ResetState();
+                    ResetStateCategoryAndItem();
                 }
                 if (isEditItem)
                 {
@@ -271,7 +266,7 @@ namespace MarriageHall.GUI
                             MessageBox.Show("Sửa sản phẩm thành công", "Thông báo");
                         }
                     }
-                    ResetState();
+                    ResetStateCategoryAndItem();
                 }
                 LoadListItem();
             }
@@ -279,6 +274,11 @@ namespace MarriageHall.GUI
             {
                 MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void txtItemSearchName_TextChanged(object sender, EventArgs e)
+        {
+            dgvItem.DataSource = BLLItem.Instance.SearchItemByName(txtItemSearchName.Text);
         }
     }
 }

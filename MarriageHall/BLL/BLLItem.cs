@@ -30,6 +30,13 @@ namespace MarriageHall.BLL
             return DataProvider.Instance.GetDataTable(query);
         }
 
+        public DataTable SearchItemByName(string name)
+        {
+            string query = $"SELECT * FROM Items WHERE Name LIKE N'%{name}%'";
+
+            return DataProvider.Instance.GetDataTable(query);
+        }
+
         public DataTable GetItemByCategoryId(int categoryId)
         {
             string query = $"SELECT * FROM Items WHERE CategoryId = {categoryId}";

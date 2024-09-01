@@ -2,6 +2,7 @@
 using System.Data;
 using System.Windows.Forms;
 using System;
+using System.Linq;
 
 namespace MarriageHall.DLL
 {
@@ -36,16 +37,35 @@ namespace MarriageHall.DLL
             }
         }
 
-        public DataTable GetDataTable(string query)
+        public DataTable GetDataTable(string query, object[] parameter = null)
         {
             Connected();
             if (conn.State == ConnectionState.Closed)
             {
                 conn.Open();
             }
-            da = new SqlDataAdapter(query, conn);
+
+            SqlCommand command = new SqlCommand(query, conn);
+
+            if (parameter != null)
+            {
+                string[] listPara = query.Split(' ');
+                int i = 0;
+                foreach (string item in listPara)
+                {
+                    if (item.Contains('@'))
+                    {
+                        string para = item.Replace(",", "").Replace("(", "").Replace(")", "");
+                        command.Parameters.AddWithValue(para, parameter[i]);
+                        i++;
+                    }
+                }
+            }
+
+            da = new SqlDataAdapter(command);
             dt = new DataTable();
             da.Fill(dt);
+
             if (conn.State == ConnectionState.Open)
             {
                 conn.Close();
@@ -53,9 +73,10 @@ namespace MarriageHall.DLL
             return dt;
         }
 
-        public bool RunQuery(string query)
+        public bool RunQuery(string query, object[] parameter = null)
         {
-            int check = 0;
+            int data = 0;
+
             try
             {
                 Connected();
@@ -64,7 +85,21 @@ namespace MarriageHall.DLL
                     conn.Open();
                 }
                 SqlCommand command = new SqlCommand(query, conn);
-                check = command.ExecuteNonQuery();
+                if (parameter != null)
+                {
+                    string[] listPara = query.Split(' ');
+                    int i = 0;
+                    foreach (string item in listPara)
+                    {
+                        if (item.Contains('@'))
+                        {
+                            string para = item.Replace(",", "").Replace("(", "").Replace(")", "");
+                            command.Parameters.AddWithValue(para, parameter[i]);
+                            i++;
+                        }
+                    }
+                }
+                data = command.ExecuteNonQuery();
                 if (conn.State == ConnectionState.Open)
                 {
                     conn.Close();
@@ -72,9 +107,10 @@ namespace MarriageHall.DLL
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi: " + ex.Message, "Thông báo");
+                MessageBox.Show("Loi: " + ex.Message, "Thong bao");
             }
-            return check > 0;
+
+            return data > 0;
         }
     }
 }

@@ -25,6 +25,20 @@ namespace MarriageHall.BLL
             return DataProvider.Instance.GetDataTable(query);
         }
 
+        public Account GetAccountByUserName(string userName)
+        {
+            string query = $"SELECT Id, UserName, Name, Gender, Phone, Permission FROM Accounts WHERE UserName = '{userName}'";
+
+            DataTable data = DataProvider.Instance.GetDataTable(query);
+
+            foreach (DataRow row in data.Rows)
+            {
+                return new Account(row);
+            }
+
+            return null;
+        }
+
         public DataTable SearchAccountByName(string name)
         {
             string query = $"SELECT Id, UserName, Name, Gender, Phone, Permission FROM Accounts WHERE Name LIKE N'%{name}%'";

@@ -48,7 +48,7 @@
             this.kháchHàngToolStripMenuItem});
             this.mnHome.Location = new System.Drawing.Point(0, 0);
             this.mnHome.Name = "mnHome";
-            this.mnHome.Size = new System.Drawing.Size(778, 33);
+            this.mnHome.Size = new System.Drawing.Size(1178, 33);
             this.mnHome.TabIndex = 0;
             this.mnHome.Text = "menuStrip1";
             // 
@@ -71,14 +71,16 @@
             // thôngTinCáNhânToolStripMenuItem
             // 
             this.thôngTinCáNhânToolStripMenuItem.Name = "thôngTinCáNhânToolStripMenuItem";
-            this.thôngTinCáNhânToolStripMenuItem.Size = new System.Drawing.Size(256, 34);
+            this.thôngTinCáNhânToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.thôngTinCáNhânToolStripMenuItem.Text = "Thông tin cá nhân";
+            this.thôngTinCáNhânToolStripMenuItem.Click += new System.EventHandler(this.thôngTinCáNhânToolStripMenuItem_Click);
             // 
             // đăngXuấtToolStripMenuItem
             // 
             this.đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
-            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(256, 34);
+            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
+            this.đăngXuấtToolStripMenuItem.Click += new System.EventHandler(this.đăngXuấtToolStripMenuItem_Click);
             // 
             // kháchHàngToolStripMenuItem
             // 
@@ -90,7 +92,7 @@
             // 
             this.panel1.Location = new System.Drawing.Point(0, 34);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(777, 510);
+            this.panel1.Size = new System.Drawing.Size(1166, 698);
             this.panel1.TabIndex = 1;
             // 
             // FrmHome
@@ -99,7 +101,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(778, 544);
+            this.ClientSize = new System.Drawing.Size(1178, 744);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.mnHome);
             this.MainMenuStrip = this.mnHome;

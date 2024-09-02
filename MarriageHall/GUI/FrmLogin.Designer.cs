@@ -65,10 +65,11 @@
             // 
             // btnExit
             // 
+            this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnExit.Location = new System.Drawing.Point(262, 258);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(123, 43);
-            this.btnExit.TabIndex = 4;
+            this.btnExit.TabIndex = 3;
             this.btnExit.Text = "Thoát";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
@@ -78,7 +79,7 @@
             this.btnLogin.Location = new System.Drawing.Point(111, 258);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(123, 43);
-            this.btnLogin.TabIndex = 3;
+            this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Đăng nhập";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -90,14 +91,15 @@
             this.panel4.Location = new System.Drawing.Point(18, 172);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(367, 67);
-            this.panel4.TabIndex = 2;
+            this.panel4.TabIndex = 1;
             // 
             // txtPassword
             // 
             this.txtPassword.Location = new System.Drawing.Point(159, 24);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(189, 26);
-            this.txtPassword.TabIndex = 1;
+            this.txtPassword.TabIndex = 0;
+            this.txtPassword.UseSystemPasswordChar = true;
             // 
             // label3
             // 
@@ -115,14 +117,14 @@
             this.panel3.Location = new System.Drawing.Point(18, 85);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(367, 67);
-            this.panel3.TabIndex = 1;
+            this.panel3.TabIndex = 0;
             // 
             // txtUserName
             // 
             this.txtUserName.Location = new System.Drawing.Point(159, 24);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(189, 26);
-            this.txtUserName.TabIndex = 1;
+            this.txtUserName.TabIndex = 0;
             // 
             // label2
             // 
@@ -145,10 +147,12 @@
             // 
             // FrmLogin
             // 
+            this.AcceptButton = this.btnLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(778, 344);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MarriageHall.BLL;
+using MarriageHall.DTO;
+using System;
 using System.Windows.Forms;
 
 namespace MarriageHall.GUI
@@ -8,11 +10,6 @@ namespace MarriageHall.GUI
         public FrmLogin()
         {
             InitializeComponent();
-        }
-
-        private bool Login()
-        {
-            return true;
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -30,14 +27,22 @@ namespace MarriageHall.GUI
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (Login())
+            string userName = txtUserName.Text;
+            string password = txtPassword.Text;
+            txtUserName.Clear();
+            txtPassword.Clear();
+            if (BLLAccount.Instance.Login(userName, password))
             {
-                FrmHome frmHome = new FrmHome();
+                Account loginAccount = BLLAccount.Instance.GetAccountByUserName(userName);
+                FrmHome frmHome = new FrmHome(loginAccount);
                 Hide();
                 frmHome.ShowDialog();
                 Show();
             }
-
+            else
+            {
+                MessageBox.Show("Tên đăng nhập hoặc mật khẩu không chính xác", "Thông báo");
+            }
         }
     }
 }

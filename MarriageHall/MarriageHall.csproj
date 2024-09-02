@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="BLL\BLLAccount.cs" />
     <Compile Include="BLL\BLLCategory.cs" />
+    <Compile Include="BLL\BLLCustomer.cs" />
     <Compile Include="BLL\BLLHall.cs" />
     <Compile Include="BLL\BLLItem.cs" />
     <Compile Include="DLL\DataProvider.cs" />

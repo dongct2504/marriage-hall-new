@@ -20,6 +20,7 @@ namespace MarriageHall.GUI
             LoadListItem();
             LoadListHall();
             LoadListAccount();
+            LoadListCustomer();
         }
 
         #region category_and_item
@@ -390,6 +391,7 @@ namespace MarriageHall.GUI
                     }
                 }
                 ResetStateHall();
+                ClearHall();
                 LoadListHall();
             }
             catch (Exception ex)
@@ -453,6 +455,7 @@ namespace MarriageHall.GUI
             btnAddAccount.Enabled = true;
             btnEditAccount.Enabled = true;
             btnDeleteAccount.Enabled = true;
+            btnResetPassword.Enabled = true;
             txtAccountUserName.ReadOnly = true;
         }
 
@@ -466,7 +469,7 @@ namespace MarriageHall.GUI
 
         private void btnDeleteAccount_Click(object sender, EventArgs e)
         {
-            GetAccount ();
+            GetAccount();
             if (MessageBox.Show("Bạn có chắc muốn xóa?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
                 if (BLLAccount.Instance.DeleteAccount(account.Id))
@@ -488,6 +491,7 @@ namespace MarriageHall.GUI
             isAddAccount = true;
             btnEditAccount.Enabled = false;
             btnDeleteAccount.Enabled = false;
+            btnResetPassword.Enabled = false;
             ClearAccount();
             txtAccountUserName.ReadOnly = false;
             txtAccountUserName.Focus();
@@ -503,6 +507,7 @@ namespace MarriageHall.GUI
             isEditAccount = true;
             btnAddAccount.Enabled = false;
             btnDeleteAccount.Enabled = false;
+            btnResetPassword.Enabled = false;
         }
 
         private void btnSaveAccount_Click(object sender, EventArgs e)
@@ -531,6 +536,7 @@ namespace MarriageHall.GUI
                     }
                 }
                 ResetStateAccount();
+                ClearAccount();
                 LoadListAccount();
             }
             catch (Exception ex)
@@ -565,6 +571,139 @@ namespace MarriageHall.GUI
             {
                 MessageBox.Show($"Reset mật khẩu tài khoản {account.UserName} thành công", "Thông báo");
             }
+        }
+        #endregion
+
+        #region customer
+        bool isAddCustomer = false;
+        bool isEditCustomer = false;
+        Customer customer = new Customer();
+
+        private void GetCustomer()
+        {
+            bool hasCustomerId = int.TryParse(txtCustomerId.Text, out int customerId);
+            if (hasCustomerId)
+            {
+                customer.Id = customerId;
+            }
+            customer.Name = txtCustomerName.Text;
+            customer.Phone = txtCustomerPhone.Text;
+            customer.Gender = (GenderEnum)cboCustomerGender.SelectedValue;
+        }
+
+        private void LoadListCustomer()
+        {
+            dgvCustomer.DataSource = BLLCustomer.Instance.GetListCustomer();
+            cboCustomerGender.DataSource = EnumExtension.GetListDescriptions<GenderEnum>();
+            cboCustomerGender.ValueMember = "Key";
+            cboCustomerGender.DisplayMember = "Value";
+        }
+
+        private void ResetStateCustomer()
+        {
+            isAddCustomer = false;
+            isEditCustomer = false;
+            btnAddCustomer.Enabled = true;
+            btnEditCustomer.Enabled = true;
+            btnDeleteCustomer.Enabled = true;
+        }
+
+        private void ClearCustomer()
+        {
+            txtCustomerId.Clear();
+            txtCustomerName.Clear();
+            txtCustomerPhone.Clear();
+        }
+
+        private void btnDeleteCustomer_Click(object sender, EventArgs e)
+        {
+            GetCustomer();
+            if (MessageBox.Show("Bạn có chắc muốn xóa?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                if (BLLCustomer.Instance.DeleteCustomer(customer.Id))
+                {
+                    MessageBox.Show("Xóa khách hàng thành công", "Thông báo");
+                }
+            }
+            ClearCustomer();
+            LoadListCustomer();
+        }
+
+        private void btnAddCustomer_Click(object sender, EventArgs e)
+        {
+            if (isAddCustomer)
+            {
+                ResetStateCustomer();
+                return;
+            }
+            isAddCustomer = true;
+            btnEditCustomer.Enabled = false;
+            btnDeleteCustomer.Enabled = false;
+            txtCustomerName.Focus();
+        }
+
+        private void btnEditCustomer_Click(object sender, EventArgs e)
+        {
+            if (isEditAccount)
+            {
+                ResetStateCustomer();
+                return;
+            }
+            isEditAccount = true;
+            btnAddCustomer.Enabled = false;
+            btnDeleteCustomer.Enabled = false;
+        }
+
+        private void btnSaveCustomer_Click(object sender, EventArgs e)
+        {
+            GetCustomer();
+            try
+            {
+                if (isAddCustomer)
+                {
+                    if (BLLCustomer.Instance.Validate(customer))
+                    {
+                        if (BLLCustomer.Instance.InsertCustomer(customer))
+                        {
+                            MessageBox.Show("Thêm khách hàng thành công", "Thông báo");
+                        }
+                    }
+                }
+                if (isEditCustomer)
+                {
+                    if (BLLCustomer.Instance.Validate(customer))
+                    {
+                        if (BLLCustomer.Instance.UpdateCustomer(customer))
+                        {
+                            MessageBox.Show("Sửa khách hàng thành công", "Thông báo");
+                        }
+                    }
+                }
+                ResetStateCustomer();
+                ClearCustomer();
+                LoadListCustomer();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvCustomer_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var row = dgvCustomer.SelectedCells[0].OwningRow;
+            if (!isAddCustomer && !isEditCustomer)
+            {
+                txtCustomerId.Text = row.Cells["Id"].Value.ToString();
+            }
+            txtCustomerName.Text = row.Cells["Name"].Value.ToString();
+            txtAccountPhone.Text = row.Cells["Phone"].Value.ToString();
+            cboAccountGender.SelectedValue = int.Parse(row.Cells["Gender"].Value.ToString());
+        }
+
+        private void txtCustomerSearchName_TextChanged(object sender, EventArgs e)
+        {
+            dgvCustomer.DataSource = BLLCustomer.Instance.SearchCustomerByName(txtCustomerSearchName.Text);
         }
         #endregion
     }

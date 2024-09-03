@@ -1,6 +1,7 @@
 ﻿using MarriageHall.DLL;
 using MarriageHall.DTO;
 using System.Data;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace MarriageHall.BLL
@@ -56,6 +57,11 @@ namespace MarriageHall.BLL
             if (customer.Name.Equals(""))
             {
                 MessageBox.Show("Tên khách hàng không được để trống", "Thông báo");
+                return false;
+            }
+            if (!Regex.IsMatch(customer.Phone, @"^0\d{9,10}$"))
+            {
+                MessageBox.Show("Số điện thoạt không hợp lệ", "Thông báo");
                 return false;
             }
             return true;

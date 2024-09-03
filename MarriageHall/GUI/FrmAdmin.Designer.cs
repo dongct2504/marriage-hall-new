@@ -32,6 +32,9 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tpCategoryAndItem = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.panel24 = new System.Windows.Forms.Panel();
+            this.txtItemSearchName = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.btnDeleteItem = new System.Windows.Forms.Button();
             this.btnSaveItem = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
@@ -51,15 +54,13 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvItem = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtItemSearchName = new System.Windows.Forms.TextBox();
+            this.txtCategoryName = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.btnSaveCategory = new System.Windows.Forms.Button();
             this.btnDeleteCategory = new System.Windows.Forms.Button();
             this.btnEditCategory = new System.Windows.Forms.Button();
             this.btnAddCategory = new System.Windows.Forms.Button();
-            this.txtCategoryName = new System.Windows.Forms.TextBox();
             this.txtCategoryId = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.cboCategory = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -88,9 +89,13 @@
             this.dgvHall = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.panel15 = new System.Windows.Forms.Panel();
-            this.txtAccountSearchName = new System.Windows.Forms.TextBox();
+            this.txtAccountSearchNameAndPhone = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.panel16 = new System.Windows.Forms.Panel();
+            this.btnResetPassword = new System.Windows.Forms.Button();
+            this.panel25 = new System.Windows.Forms.Panel();
+            this.cboAccountPermission = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.panel23 = new System.Windows.Forms.Panel();
             this.txtAccountUserName = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
@@ -103,8 +108,6 @@
             this.panel18 = new System.Windows.Forms.Panel();
             this.label19 = new System.Windows.Forms.Label();
             this.txtAccountName = new System.Windows.Forms.TextBox();
-            this.cboAccountPermission = new System.Windows.Forms.ComboBox();
-            this.btnResetPassword = new System.Windows.Forms.Button();
             this.panel20 = new System.Windows.Forms.Panel();
             this.txtAccountId = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
@@ -115,11 +118,8 @@
             this.panel21 = new System.Windows.Forms.Panel();
             this.dgvAccount = new System.Windows.Forms.DataGridView();
             this.tpCustomer = new System.Windows.Forms.TabPage();
-            this.panel24 = new System.Windows.Forms.Panel();
-            this.panel25 = new System.Windows.Forms.Panel();
-            this.label17 = new System.Windows.Forms.Label();
             this.panel19 = new System.Windows.Forms.Panel();
-            this.txtCustomerSearchName = new System.Windows.Forms.TextBox();
+            this.txtCustomerSearchNameAndPhone = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.panel26 = new System.Windows.Forms.Panel();
             this.panel29 = new System.Windows.Forms.Panel();
@@ -143,6 +143,7 @@
             this.tabAdmin.SuspendLayout();
             this.tpCategoryAndItem.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel24.SuspendLayout();
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmItemPrice)).BeginInit();
             this.panel7.SuspendLayout();
@@ -165,6 +166,7 @@
             this.tabPage4.SuspendLayout();
             this.panel15.SuspendLayout();
             this.panel16.SuspendLayout();
+            this.panel25.SuspendLayout();
             this.panel23.SuspendLayout();
             this.panel22.SuspendLayout();
             this.panel17.SuspendLayout();
@@ -173,8 +175,6 @@
             this.panel21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccount)).BeginInit();
             this.tpCustomer.SuspendLayout();
-            this.panel24.SuspendLayout();
-            this.panel25.SuspendLayout();
             this.panel19.SuspendLayout();
             this.panel26.SuspendLayout();
             this.panel29.SuspendLayout();
@@ -236,6 +236,32 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(363, 668);
             this.panel3.TabIndex = 1;
+            // 
+            // panel24
+            // 
+            this.panel24.Controls.Add(this.txtItemSearchName);
+            this.panel24.Controls.Add(this.label12);
+            this.panel24.Location = new System.Drawing.Point(14, 45);
+            this.panel24.Name = "panel24";
+            this.panel24.Size = new System.Drawing.Size(337, 48);
+            this.panel24.TabIndex = 0;
+            // 
+            // txtItemSearchName
+            // 
+            this.txtItemSearchName.Location = new System.Drawing.Point(132, 6);
+            this.txtItemSearchName.Name = "txtItemSearchName";
+            this.txtItemSearchName.Size = new System.Drawing.Size(186, 26);
+            this.txtItemSearchName.TabIndex = 0;
+            this.txtItemSearchName.TextChanged += new System.EventHandler(this.txtItemSearchName_TextChanged);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(7, 9);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(75, 20);
+            this.label12.TabIndex = 11;
+            this.label12.Text = "Tìm kiếm:";
             // 
             // btnDeleteItem
             // 
@@ -424,22 +450,21 @@
             this.panel1.Size = new System.Drawing.Size(772, 109);
             this.panel1.TabIndex = 0;
             // 
-            // label12
+            // txtCategoryName
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(7, 9);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(75, 20);
-            this.label12.TabIndex = 11;
-            this.label12.Text = "Tìm kiếm:";
+            this.txtCategoryName.Location = new System.Drawing.Point(233, 70);
+            this.txtCategoryName.Name = "txtCategoryName";
+            this.txtCategoryName.Size = new System.Drawing.Size(164, 26);
+            this.txtCategoryName.TabIndex = 2;
             // 
-            // txtItemSearchName
+            // label3
             // 
-            this.txtItemSearchName.Location = new System.Drawing.Point(132, 6);
-            this.txtItemSearchName.Name = "txtItemSearchName";
-            this.txtItemSearchName.Size = new System.Drawing.Size(186, 26);
-            this.txtItemSearchName.TabIndex = 0;
-            this.txtItemSearchName.TextChanged += new System.EventHandler(this.txtItemSearchName_TextChanged);
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(187, 73);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(40, 20);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Tên:";
             // 
             // btnSaveCategory
             // 
@@ -481,13 +506,6 @@
             this.btnAddCategory.UseVisualStyleBackColor = true;
             this.btnAddCategory.Click += new System.EventHandler(this.btnAddCategory_Click);
             // 
-            // txtCategoryName
-            // 
-            this.txtCategoryName.Location = new System.Drawing.Point(233, 70);
-            this.txtCategoryName.Name = "txtCategoryName";
-            this.txtCategoryName.Size = new System.Drawing.Size(164, 26);
-            this.txtCategoryName.TabIndex = 2;
-            // 
             // txtCategoryId
             // 
             this.txtCategoryId.Location = new System.Drawing.Point(67, 70);
@@ -495,15 +513,6 @@
             this.txtCategoryId.ReadOnly = true;
             this.txtCategoryId.Size = new System.Drawing.Size(69, 26);
             this.txtCategoryId.TabIndex = 1;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(187, 73);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(40, 20);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Tên:";
             // 
             // label2
             // 
@@ -776,20 +785,20 @@
             // 
             // panel15
             // 
-            this.panel15.Controls.Add(this.txtAccountSearchName);
+            this.panel15.Controls.Add(this.txtAccountSearchNameAndPhone);
             this.panel15.Controls.Add(this.label14);
             this.panel15.Location = new System.Drawing.Point(812, 20);
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(333, 60);
             this.panel15.TabIndex = 0;
             // 
-            // txtAccountSearchName
+            // txtAccountSearchNameAndPhone
             // 
-            this.txtAccountSearchName.Location = new System.Drawing.Point(120, 14);
-            this.txtAccountSearchName.Name = "txtAccountSearchName";
-            this.txtAccountSearchName.Size = new System.Drawing.Size(198, 26);
-            this.txtAccountSearchName.TabIndex = 0;
-            this.txtAccountSearchName.TextChanged += new System.EventHandler(this.txtAccountSearchName_TextChanged);
+            this.txtAccountSearchNameAndPhone.Location = new System.Drawing.Point(120, 14);
+            this.txtAccountSearchNameAndPhone.Name = "txtAccountSearchNameAndPhone";
+            this.txtAccountSearchNameAndPhone.Size = new System.Drawing.Size(198, 26);
+            this.txtAccountSearchNameAndPhone.TabIndex = 0;
+            this.txtAccountSearchNameAndPhone.TextChanged += new System.EventHandler(this.txtAccountSearchName_TextChanged);
             // 
             // label14
             // 
@@ -817,6 +826,42 @@
             this.panel16.Name = "panel16";
             this.panel16.Size = new System.Drawing.Size(333, 599);
             this.panel16.TabIndex = 1;
+            // 
+            // btnResetPassword
+            // 
+            this.btnResetPassword.Location = new System.Drawing.Point(52, 536);
+            this.btnResetPassword.Name = "btnResetPassword";
+            this.btnResetPassword.Size = new System.Drawing.Size(247, 40);
+            this.btnResetPassword.TabIndex = 10;
+            this.btnResetPassword.Text = "Reset mật khẩu";
+            this.btnResetPassword.UseVisualStyleBackColor = true;
+            this.btnResetPassword.Click += new System.EventHandler(this.btnResetPassword_Click);
+            // 
+            // panel25
+            // 
+            this.panel25.Controls.Add(this.cboAccountPermission);
+            this.panel25.Controls.Add(this.label17);
+            this.panel25.Location = new System.Drawing.Point(6, 319);
+            this.panel25.Name = "panel25";
+            this.panel25.Size = new System.Drawing.Size(327, 48);
+            this.panel25.TabIndex = 5;
+            // 
+            // cboAccountPermission
+            // 
+            this.cboAccountPermission.FormattingEnabled = true;
+            this.cboAccountPermission.Location = new System.Drawing.Point(196, 13);
+            this.cboAccountPermission.Name = "cboAccountPermission";
+            this.cboAccountPermission.Size = new System.Drawing.Size(116, 28);
+            this.cboAccountPermission.TabIndex = 0;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(14, 16);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(70, 20);
+            this.label17.TabIndex = 0;
+            this.label17.Text = "Chức vụ:";
             // 
             // panel23
             // 
@@ -920,24 +965,6 @@
             this.txtAccountName.Size = new System.Drawing.Size(157, 26);
             this.txtAccountName.TabIndex = 0;
             // 
-            // cboAccountPermission
-            // 
-            this.cboAccountPermission.FormattingEnabled = true;
-            this.cboAccountPermission.Location = new System.Drawing.Point(196, 13);
-            this.cboAccountPermission.Name = "cboAccountPermission";
-            this.cboAccountPermission.Size = new System.Drawing.Size(116, 28);
-            this.cboAccountPermission.TabIndex = 0;
-            // 
-            // btnResetPassword
-            // 
-            this.btnResetPassword.Location = new System.Drawing.Point(52, 536);
-            this.btnResetPassword.Name = "btnResetPassword";
-            this.btnResetPassword.Size = new System.Drawing.Size(247, 40);
-            this.btnResetPassword.TabIndex = 10;
-            this.btnResetPassword.Text = "Reset mật khẩu";
-            this.btnResetPassword.UseVisualStyleBackColor = true;
-            this.btnResetPassword.Click += new System.EventHandler(this.btnResetPassword_Click);
-            // 
             // panel20
             // 
             this.panel20.Controls.Add(this.txtAccountId);
@@ -1039,49 +1066,22 @@
             this.tpCustomer.Text = "Khách hàng";
             this.tpCustomer.UseVisualStyleBackColor = true;
             // 
-            // panel24
-            // 
-            this.panel24.Controls.Add(this.txtItemSearchName);
-            this.panel24.Controls.Add(this.label12);
-            this.panel24.Location = new System.Drawing.Point(14, 45);
-            this.panel24.Name = "panel24";
-            this.panel24.Size = new System.Drawing.Size(337, 48);
-            this.panel24.TabIndex = 0;
-            // 
-            // panel25
-            // 
-            this.panel25.Controls.Add(this.cboAccountPermission);
-            this.panel25.Controls.Add(this.label17);
-            this.panel25.Location = new System.Drawing.Point(6, 319);
-            this.panel25.Name = "panel25";
-            this.panel25.Size = new System.Drawing.Size(327, 48);
-            this.panel25.TabIndex = 5;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(14, 16);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(70, 20);
-            this.label17.TabIndex = 0;
-            this.label17.Text = "Chức vụ:";
-            // 
             // panel19
             // 
-            this.panel19.Controls.Add(this.txtCustomerSearchName);
+            this.panel19.Controls.Add(this.txtCustomerSearchNameAndPhone);
             this.panel19.Controls.Add(this.label21);
             this.panel19.Location = new System.Drawing.Point(812, 19);
             this.panel19.Name = "panel19";
             this.panel19.Size = new System.Drawing.Size(333, 60);
             this.panel19.TabIndex = 0;
             // 
-            // txtCustomerSearchName
+            // txtCustomerSearchNameAndPhone
             // 
-            this.txtCustomerSearchName.Location = new System.Drawing.Point(120, 14);
-            this.txtCustomerSearchName.Name = "txtCustomerSearchName";
-            this.txtCustomerSearchName.Size = new System.Drawing.Size(198, 26);
-            this.txtCustomerSearchName.TabIndex = 0;
-            this.txtCustomerSearchName.TextChanged += new System.EventHandler(this.txtCustomerSearchName_TextChanged);
+            this.txtCustomerSearchNameAndPhone.Location = new System.Drawing.Point(120, 14);
+            this.txtCustomerSearchNameAndPhone.Name = "txtCustomerSearchNameAndPhone";
+            this.txtCustomerSearchNameAndPhone.Size = new System.Drawing.Size(198, 26);
+            this.txtCustomerSearchNameAndPhone.TabIndex = 0;
+            this.txtCustomerSearchNameAndPhone.TextChanged += new System.EventHandler(this.txtCustomerSearchName_TextChanged);
             // 
             // label21
             // 
@@ -1288,6 +1288,8 @@
             this.tabAdmin.ResumeLayout(false);
             this.tpCategoryAndItem.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.panel24.ResumeLayout(false);
+            this.panel24.PerformLayout();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmItemPrice)).EndInit();
@@ -1321,6 +1323,8 @@
             this.panel15.ResumeLayout(false);
             this.panel15.PerformLayout();
             this.panel16.ResumeLayout(false);
+            this.panel25.ResumeLayout(false);
+            this.panel25.PerformLayout();
             this.panel23.ResumeLayout(false);
             this.panel23.PerformLayout();
             this.panel22.ResumeLayout(false);
@@ -1334,10 +1338,6 @@
             this.panel21.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccount)).EndInit();
             this.tpCustomer.ResumeLayout(false);
-            this.panel24.ResumeLayout(false);
-            this.panel24.PerformLayout();
-            this.panel25.ResumeLayout(false);
-            this.panel25.PerformLayout();
             this.panel19.ResumeLayout(false);
             this.panel19.PerformLayout();
             this.panel26.ResumeLayout(false);
@@ -1418,7 +1418,7 @@
         private System.Windows.Forms.TextBox txtHallSearchName;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Panel panel15;
-        private System.Windows.Forms.TextBox txtAccountSearchName;
+        private System.Windows.Forms.TextBox txtAccountSearchNameAndPhone;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Panel panel16;
         private System.Windows.Forms.Panel panel17;
@@ -1448,7 +1448,7 @@
         private System.Windows.Forms.Panel panel25;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Panel panel19;
-        private System.Windows.Forms.TextBox txtCustomerSearchName;
+        private System.Windows.Forms.TextBox txtCustomerSearchNameAndPhone;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Panel panel26;
         private System.Windows.Forms.Panel panel29;

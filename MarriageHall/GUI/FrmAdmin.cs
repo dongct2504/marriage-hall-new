@@ -252,26 +252,29 @@ namespace MarriageHall.GUI
             {
                 if (isAddItem)
                 {
-                    if (BLLItem.Instance.Validate(item))
+                    if (!BLLItem.Instance.Validate(item))
                     {
-                        if (BLLItem.Instance.InsertItem(item))
-                        {
-                            MessageBox.Show("Thêm sản phẩm thành công", "Thông báo");
-                        }
+                        return;
+                    }
+                    if (BLLItem.Instance.InsertItem(item))
+                    {
+                        MessageBox.Show("Thêm sản phẩm thành công", "Thông báo");
                     }
                 }
                 if (isEditItem)
                 {
-                    if (BLLItem.Instance.Validate(item))
+                    if (!BLLItem.Instance.Validate(item))
                     {
-                        if (BLLItem.Instance.UpdateItem(item))
-                        {
-                            MessageBox.Show("Sửa sản phẩm thành công", "Thông báo");
-                        }
+                        return;
+                    }
+                    if (BLLItem.Instance.UpdateItem(item))
+                    {
+                        MessageBox.Show("Sửa sản phẩm thành công", "Thông báo");
                     }
                 }
                 cboCategory.SelectedValue = cboItemCategory.SelectedValue;
                 ResetStateCategoryAndItem();
+                ClearItem();
                 LoadListItem();
             }
             catch (Exception ex)
@@ -372,22 +375,24 @@ namespace MarriageHall.GUI
             {
                 if (isAddHall)
                 {
-                    if (BLLHall.Instance.Validate(hall))
+                    if (!BLLHall.Instance.Validate(hall))
                     {
-                        if (BLLHall.Instance.InsertHall(hall))
-                        {
-                            MessageBox.Show("Thêm sảnh cưới thành công", "Thông báo");
-                        }
+                        return;
+                    }
+                    if (BLLHall.Instance.InsertHall(hall))
+                    {
+                        MessageBox.Show("Thêm sảnh cưới thành công", "Thông báo");
                     }
                 }
                 if (isEditHall)
                 {
-                    if (BLLHall.Instance.Validate(hall))
+                    if (!BLLHall.Instance.Validate(hall))
                     {
-                        if (BLLHall.Instance.UpdateHall(hall))
-                        {
-                            MessageBox.Show("Sửa sảnh cưới thành công", "Thông báo");
-                        }
+                        return;
+                    }
+                    if (BLLHall.Instance.UpdateHall(hall))
+                    {
+                        MessageBox.Show("Sửa sảnh cưới thành công", "Thông báo");
                     }
                 }
                 ResetStateHall();
@@ -517,22 +522,24 @@ namespace MarriageHall.GUI
             {
                 if (isAddAccount)
                 {
-                    if (BLLAccount.Instance.Validate(account))
+                    if (!BLLAccount.Instance.Validate(account))
                     {
-                        if (BLLAccount.Instance.InsertAccount(account))
-                        {
-                            MessageBox.Show("Thêm tài khoản thành công", "Thông báo");
-                        }
+                        return;
+                    }
+                    if (BLLAccount.Instance.InsertAccount(account))
+                    {
+                        MessageBox.Show("Thêm tài khoản thành công", "Thông báo");
                     }
                 }
                 if (isEditAccount)
                 {
-                    if (BLLAccount.Instance.Validate(account))
+                    if (!BLLAccount.Instance.Validate(account))
                     {
-                        if (BLLAccount.Instance.UpdateAccount(account))
-                        {
-                            MessageBox.Show("Sửa tài khoản thành công", "Thông báo");
-                        }
+                        return;
+                    }
+                    if (BLLAccount.Instance.UpdateAccount(account))
+                    {
+                        MessageBox.Show("Sửa tài khoản thành công", "Thông báo");
                     }
                 }
                 ResetStateAccount();
@@ -561,7 +568,7 @@ namespace MarriageHall.GUI
 
         private void txtAccountSearchName_TextChanged(object sender, EventArgs e)
         {
-            dgvAccount.DataSource = BLLAccount.Instance.SearchAccountByName(txtAccountSearchName.Text);
+            dgvAccount.DataSource = BLLAccount.Instance.SearchAccountByNameAndPhone(txtAccountSearchNameAndPhone.Text);
         }
 
         private void btnResetPassword_Click(object sender, EventArgs e)
@@ -661,22 +668,24 @@ namespace MarriageHall.GUI
             {
                 if (isAddCustomer)
                 {
-                    if (BLLCustomer.Instance.Validate(customer))
+                    if (!BLLCustomer.Instance.Validate(customer))
                     {
-                        if (BLLCustomer.Instance.InsertCustomer(customer))
-                        {
-                            MessageBox.Show("Thêm khách hàng thành công", "Thông báo");
-                        }
+                        return;
+                    }
+                    if (BLLCustomer.Instance.InsertCustomer(customer))
+                    {
+                        MessageBox.Show("Thêm khách hàng thành công", "Thông báo");
                     }
                 }
                 if (isEditCustomer)
                 {
-                    if (BLLCustomer.Instance.Validate(customer))
+                    if (!BLLCustomer.Instance.Validate(customer))
                     {
-                        if (BLLCustomer.Instance.UpdateCustomer(customer))
-                        {
-                            MessageBox.Show("Sửa khách hàng thành công", "Thông báo");
-                        }
+                        return;
+                    }
+                    if (BLLCustomer.Instance.UpdateCustomer(customer))
+                    {
+                        MessageBox.Show("Sửa khách hàng thành công", "Thông báo");
                     }
                 }
                 ResetStateCustomer();
@@ -703,7 +712,7 @@ namespace MarriageHall.GUI
 
         private void txtCustomerSearchName_TextChanged(object sender, EventArgs e)
         {
-            dgvCustomer.DataSource = BLLCustomer.Instance.SearchCustomerByName(txtCustomerSearchName.Text);
+            dgvCustomer.DataSource = BLLCustomer.Instance.SearchCustomerByNameAndPhone(txtCustomerSearchNameAndPhone.Text);
         }
         #endregion
     }

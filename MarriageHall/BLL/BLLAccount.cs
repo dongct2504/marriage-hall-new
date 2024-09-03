@@ -3,6 +3,7 @@ using MarriageHall.DTO;
 using System.Data;
 using System.Linq;
 using System.Security.Cryptography;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace MarriageHall.BLL
@@ -93,9 +94,19 @@ namespace MarriageHall.BLL
 
         public bool Validate(Account account)
         {
+            if (account.UserName.Equals(""))
+            {
+                MessageBox.Show("Tên đăng nhập không được để trống", "Thông báo");
+                return false;
+            }
             if (account.Name.Equals(""))
             {
                 MessageBox.Show("Tên tài khoản không được để trống", "Thông báo");
+                return false;
+            }
+            if (!Regex.IsMatch(account.Phone, @"^0\d{9,10}$"))
+            {
+                MessageBox.Show("Số điện thoạt không hợp lệ", "Thông báo");
                 return false;
             }
             return true;

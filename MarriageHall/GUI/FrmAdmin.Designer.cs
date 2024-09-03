@@ -1104,7 +1104,7 @@
             this.panel26.Controls.Add(this.btnAddCustomer);
             this.panel26.Location = new System.Drawing.Point(812, 85);
             this.panel26.Name = "panel26";
-            this.panel26.Size = new System.Drawing.Size(333, 593);
+            this.panel26.Size = new System.Drawing.Size(333, 600);
             this.panel26.TabIndex = 1;
             // 
             // panel29

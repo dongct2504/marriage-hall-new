@@ -706,8 +706,8 @@ namespace MarriageHall.GUI
                 txtCustomerId.Text = row.Cells["Id"].Value.ToString();
             }
             txtCustomerName.Text = row.Cells["Name"].Value.ToString();
-            txtAccountPhone.Text = row.Cells["Phone"].Value.ToString();
-            cboAccountGender.SelectedValue = int.Parse(row.Cells["Gender"].Value.ToString());
+            txtCustomerPhone.Text = row.Cells["Phone"].Value.ToString();
+            cboCustomerGender.SelectedValue = int.Parse(row.Cells["Gender"].Value.ToString());
         }
 
         private void txtCustomerSearchName_TextChanged(object sender, EventArgs e)

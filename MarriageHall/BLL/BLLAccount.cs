@@ -39,16 +39,16 @@ namespace MarriageHall.BLL
             return null;
         }
 
-        public DataTable SearchAccountByName(string name)
+        public DataTable SearchAccountByNameAndPhone(string search)
         {
-            string query = $"SELECT Id, UserName, Name, Gender, Phone, Permission FROM Accounts WHERE Name LIKE N'%{name}%'";
+            string query = $"SELECT Id, UserName, Name, Gender, Phone, Permission FROM Accounts WHERE Name LIKE N'%{search}%' OR Phone LIKE '%{search}%'";
 
             return DataProvider.Instance.GetDataTable(query);
         }
 
         public bool Login(string userName, string password)
         {
-            string query = $"SELECT * FROM Accounts WHERE UserName = '{userName}'";
+            string query = $"SELECT PasswordHash, PasswordSalt FROM Accounts WHERE UserName = '{userName}'";
             DataTable dt = DataProvider.Instance.GetDataTable(query);
             if (dt.Rows.Count == 0)
             {

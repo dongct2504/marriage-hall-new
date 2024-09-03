@@ -23,9 +23,9 @@ namespace MarriageHall.BLL
             return DataProvider.Instance.GetDataTable(query);
         }
 
-        public DataTable SearchCustomerByName(string name)
+        public DataTable SearchCustomerByNameAndPhone(string search)
         {
-            string query = $"SELECT * FROM Customers WHERE Name LIKE N'%{name}%'";
+            string query = $"SELECT * FROM Customers WHERE Name LIKE N'%{search} %' OR Phone LIKE '%{search}%'";
 
             return DataProvider.Instance.GetDataTable(query);
         }

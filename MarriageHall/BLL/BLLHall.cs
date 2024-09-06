@@ -1,5 +1,7 @@
 ﻿using MarriageHall.DLL;
 using MarriageHall.DTO;
+using MarriageHall.DTO.Enums;
+using System;
 using System.Data;
 using System.Windows.Forms;
 
@@ -19,6 +21,22 @@ namespace MarriageHall.BLL
         public DataTable GetListHall()
         {
             string query = "SELECT * FROM Halls";
+
+            return DataProvider.Instance.GetDataTable(query);
+        }
+
+        public DataTable GetHallAvailableByDate(DateTime dateTime)
+        {
+            var shiftList = EnumExtension.GetListDescriptions<ShiftEnum>();
+
+            string query = $"SELECT * FROM Halls WHERE Id NOT IN (SELECT HallId FROM Bookings WHERE Status = {(int)StatusEnum.New} AND ServiceDate = '{dateTime.ToString("yyyy-MM-dd")}' GROUP BY HallId HAVING COUNT(Shift) = {shiftList.Count})";
+
+            return DataProvider.Instance.GetDataTable(query);
+        }
+
+        public DataTable GetShiftUnavailableByDate(int hallId, DateTime dateTime)
+        {
+            string query = $"SELECT Shift FROM Bookings WHERE HallId = {hallId} AND ServiceDate = '{dateTime.ToString("yyyy-MM-dd")}'";
 
             return DataProvider.Instance.GetDataTable(query);
         }

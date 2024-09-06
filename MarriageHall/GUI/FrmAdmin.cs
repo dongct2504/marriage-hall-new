@@ -35,7 +35,11 @@ namespace MarriageHall.GUI
         {
             if (cboCategory.Items.Count > 0)
             {
-                category.Id = (int)cboCategory.SelectedValue;
+                bool hasCategoryId = int.TryParse(cboCategory.SelectedValue.ToString(), out int categoryId);
+                if (hasCategoryId)
+                {
+                    category.Id = categoryId;
+                }
             }
             category.Name = txtCategoryName.Text;
         }
@@ -646,6 +650,7 @@ namespace MarriageHall.GUI
             isAddCustomer = true;
             btnEditCustomer.Enabled = false;
             btnDeleteCustomer.Enabled = false;
+            ClearCustomer();
             txtCustomerName.Focus();
         }
 

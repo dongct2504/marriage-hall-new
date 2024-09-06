@@ -8,9 +8,11 @@ namespace MarriageHall.GUI
 {
     public partial class FrmCustomer : Form
     {
-        public FrmCustomer()
+        public Account LoginAccount { get; set; }
+        public FrmCustomer(Account account)
         {
             InitializeComponent();
+            LoginAccount = account;
         }
 
         bool isAdd = false;
@@ -68,8 +70,8 @@ namespace MarriageHall.GUI
             isAdd = true;
             btnEdit.Enabled = false;
             btnBooking.Enabled = false;
+            Clear();
             txtName.Focus();
-
         }
 
         private void btnEdit_Click(object sender, System.EventArgs e)
@@ -82,7 +84,6 @@ namespace MarriageHall.GUI
             isEdit = true;
             btnAdd.Enabled = false;
             btnBooking.Enabled = false;
-
         }
 
         private void btnSave_Click(object sender, System.EventArgs e)
@@ -137,6 +138,20 @@ namespace MarriageHall.GUI
         private void txtSearchNameAndPhone_TextChanged(object sender, EventArgs e)
         {
             dgvCustomer.DataSource = BLLCustomer.Instance.SearchCustomerByNameAndPhone(txtSearchNameAndPhone.Text);
+        }
+
+        private void btnBooking_Click(object sender, EventArgs e)
+        {
+            GetCustomer();
+            if (customer.Id == 0)
+            {
+                MessageBox.Show("Khách hàng không hợp lệ!", "Thông báo");
+                return;
+            }
+            FrmBooking frmBooking = new FrmBooking(LoginAccount, customer);
+            Hide();
+            frmBooking.ShowDialog();
+            Show();
         }
     }
 }

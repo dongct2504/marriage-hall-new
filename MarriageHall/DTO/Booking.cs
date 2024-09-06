@@ -13,6 +13,7 @@ namespace MarriageHall.DTO
         public ShiftEnum Shift { get; set; }
         public int NumberOfPeople { get; set; }
         public string Note { get; set; }
+        public decimal Discount { get; set; }
         public decimal TotalPrice { get; set; }
         public bool IsPaid { get; set; }
         public DateTimeOffset ServiceDate { get; set; }

@@ -54,7 +54,7 @@ namespace MarriageHall.GUI
 
         private void kháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmCustomer frmCustomer = new FrmCustomer();
+            FrmCustomer frmCustomer = new FrmCustomer(LoginAccount);
             Hide();
             frmCustomer.ShowDialog();
             Show();

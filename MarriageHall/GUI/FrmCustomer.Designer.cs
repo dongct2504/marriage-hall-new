@@ -47,10 +47,10 @@
             this.label27 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
+            this.btnBooking = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.panel33 = new System.Windows.Forms.Panel();
             this.dgvCustomer = new System.Windows.Forms.DataGridView();
-            this.btnBooking = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel19.SuspendLayout();
             this.panel26.SuspendLayout();
@@ -235,6 +235,16 @@
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
+            // btnBooking
+            // 
+            this.btnBooking.Location = new System.Drawing.Point(199, 394);
+            this.btnBooking.Name = "btnBooking";
+            this.btnBooking.Size = new System.Drawing.Size(100, 40);
+            this.btnBooking.TabIndex = 6;
+            this.btnBooking.Text = "Đặt tiệc";
+            this.btnBooking.UseVisualStyleBackColor = true;
+            this.btnBooking.Click += new System.EventHandler(this.btnBooking_Click);
+            // 
             // btnAdd
             // 
             this.btnAdd.Location = new System.Drawing.Point(52, 394);
@@ -266,15 +276,6 @@
             this.dgvCustomer.Size = new System.Drawing.Size(798, 666);
             this.dgvCustomer.TabIndex = 0;
             this.dgvCustomer.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomer_CellContentClick);
-            // 
-            // btnBooking
-            // 
-            this.btnBooking.Location = new System.Drawing.Point(199, 394);
-            this.btnBooking.Name = "btnBooking";
-            this.btnBooking.Size = new System.Drawing.Size(100, 40);
-            this.btnBooking.TabIndex = 6;
-            this.btnBooking.Text = "Đặt tiệc";
-            this.btnBooking.UseVisualStyleBackColor = true;
             // 
             // FrmCustomer
             // 

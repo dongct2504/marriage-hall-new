@@ -227,6 +227,10 @@ namespace MarriageHall.GUI
             {
                 if (BLLBooking.Instance.Validate(booking))
                 {
+                    if (MessageBox.Show("Bạn có chắc muốn đặt tiệc?", "Thông báo", MessageBoxButtons.OKCancel) != DialogResult.OK)
+                    {
+                        return;
+                    }
                     if (BLLBooking.Instance.InsertBooking(booking))
                     {
                         int bookingId = BLLBooking.Instance.GetBookingId(booking.HallId, booking.Shift, booking.ServiceDate.DateTime);

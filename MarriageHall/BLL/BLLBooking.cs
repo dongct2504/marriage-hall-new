@@ -18,24 +18,39 @@ namespace MarriageHall.BLL
 
         public BLLBooking() { }
 
-        public DataTable GetListBooking()
+        public DataTable GetPageBooking(DateTime dateTime, int pageIndex)
         {
-            string query = "SELECT * FROM Bookings";
+            int limit = 1;
+            string query = $"SELECT b.*, c.Name AS CustomerName, c.Phone AS CustomerPhone FROM Bookings b JOIN Customers c ON b.CustomerId = c.Id WHERE ServiceDate = '{dateTime.ToString("yyyy-MM-dd")}' ORDER BY Id OFFSET {(pageIndex - 1) * limit} ROWS FETCH NEXT {limit} ROWS ONLY";
 
             return DataProvider.Instance.GetDataTable(query);
         }
-
-        public DataTable SearchItemByName(string name)
+        public int GetTotalPageBooking(DateTime dateTime)
         {
-            string query = $"SELECT * FROM Items WHERE Name LIKE N'%{name}%'";
+            int limit = 1;
+            string query = $"SELECT COUNT(Id) AS Count FROM Bookings WHERE ServiceDate = '{dateTime.ToString("yyyy-MM-dd")}'";
 
-            return DataProvider.Instance.GetDataTable(query);
+            DataTable data = DataProvider.Instance.GetDataTable(query);
+            int count = (int)data.Rows[0]["Count"];
+            if (count == 0)
+            {
+                return 1;
+            }
+
+            return count % limit == 0 ? count / limit : count / limit + 1;
         }
 
         public bool InsertBooking(Booking booking)
         {
             int isPaid = booking.IsPaid ? 1 : 0;
             string query = $"INSERT INTO Bookings (HallId, CustomerId, StaffId, NumberOfPeople, Status, Shift, Note, Discount, TotalPrice, IsPaid, ServiceDate, CreatedAt) VALUES ({booking.HallId}, {booking.CustomerId}, {booking.StaffId}, {booking.NumberOfPeople}, {(int)StatusEnum.New}, {(int)booking.Shift}, '{booking.Note}', {booking.Discount},  {booking.TotalPrice}, {isPaid}, '{booking.ServiceDate.ToString("yyyy-MM-dd")}', '{DateTime.Today.ToString("yyyy-MM-dd")}')";
+
+            return DataProvider.Instance.RunQuery(query);
+        }
+
+        public bool UpdateBooking(int id, int isPaid, int status)
+        {
+            string query = $"UPDATE Bookings SET IsPaid = {isPaid}, Status = {status} WHERE Id = {id}";
 
             return DataProvider.Instance.RunQuery(query);
         }

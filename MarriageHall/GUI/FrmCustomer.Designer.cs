@@ -168,9 +168,9 @@
             // 
             this.panel31.Controls.Add(this.label26);
             this.panel31.Controls.Add(this.txtName);
-            this.panel31.Location = new System.Drawing.Point(7, 157);
+            this.panel31.Location = new System.Drawing.Point(6, 157);
             this.panel31.Name = "panel31";
-            this.panel31.Size = new System.Drawing.Size(326, 48);
+            this.panel31.Size = new System.Drawing.Size(327, 48);
             this.panel31.TabIndex = 1;
             // 
             // label26
@@ -271,6 +271,7 @@
             this.dgvCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCustomer.Location = new System.Drawing.Point(0, 3);
             this.dgvCustomer.Name = "dgvCustomer";
+            this.dgvCustomer.ReadOnly = true;
             this.dgvCustomer.RowHeadersWidth = 62;
             this.dgvCustomer.RowTemplate.Height = 28;
             this.dgvCustomer.Size = new System.Drawing.Size(798, 666);

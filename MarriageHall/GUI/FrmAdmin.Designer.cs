@@ -28,8 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.tabAdmin = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tpRevenue = new System.Windows.Forms.TabPage();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.dtpkRevenue = new System.Windows.Forms.DateTimePicker();
+            this.revenueChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tpCategoryAndItem = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel24 = new System.Windows.Forms.Panel();
@@ -141,6 +149,8 @@
             this.panel33 = new System.Windows.Forms.Panel();
             this.dgvCustomer = new System.Windows.Forms.DataGridView();
             this.tabAdmin.SuspendLayout();
+            this.tpRevenue.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.revenueChart)).BeginInit();
             this.tpCategoryAndItem.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel24.SuspendLayout();
@@ -187,7 +197,7 @@
             // 
             // tabAdmin
             // 
-            this.tabAdmin.Controls.Add(this.tabPage1);
+            this.tabAdmin.Controls.Add(this.tpRevenue);
             this.tabAdmin.Controls.Add(this.tpCategoryAndItem);
             this.tabAdmin.Controls.Add(this.tpHall);
             this.tabAdmin.Controls.Add(this.tabPage4);
@@ -198,15 +208,65 @@
             this.tabAdmin.Size = new System.Drawing.Size(1159, 727);
             this.tabAdmin.TabIndex = 0;
             // 
-            // tabPage1
+            // tpRevenue
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 29);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1151, 694);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Doanh thu";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tpRevenue.Controls.Add(this.label23);
+            this.tpRevenue.Controls.Add(this.label22);
+            this.tpRevenue.Controls.Add(this.dtpkRevenue);
+            this.tpRevenue.Controls.Add(this.revenueChart);
+            this.tpRevenue.Location = new System.Drawing.Point(4, 29);
+            this.tpRevenue.Name = "tpRevenue";
+            this.tpRevenue.Padding = new System.Windows.Forms.Padding(3);
+            this.tpRevenue.Size = new System.Drawing.Size(1151, 694);
+            this.tpRevenue.TabIndex = 0;
+            this.tpRevenue.Text = "Doanh thu";
+            this.tpRevenue.UseVisualStyleBackColor = true;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(938, 603);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(50, 20);
+            this.label23.TabIndex = 3;
+            this.label23.Text = "tháng";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(67, 56);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(80, 20);
+            this.label22.TabIndex = 2;
+            this.label22.Text = "triệu đồng";
+            // 
+            // dtpkRevenue
+            // 
+            this.dtpkRevenue.CustomFormat = "MM/yyyy";
+            this.dtpkRevenue.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpkRevenue.Location = new System.Drawing.Point(669, 36);
+            this.dtpkRevenue.Name = "dtpkRevenue";
+            this.dtpkRevenue.Size = new System.Drawing.Size(125, 26);
+            this.dtpkRevenue.TabIndex = 1;
+            this.dtpkRevenue.ValueChanged += new System.EventHandler(this.dtpkRevenue_ValueChanged);
+            // 
+            // revenueChart
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.revenueChart.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.revenueChart.Legends.Add(legend2);
+            this.revenueChart.Location = new System.Drawing.Point(6, 19);
+            this.revenueChart.Name = "revenueChart";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Doanh thu";
+            this.revenueChart.Series.Add(series2);
+            this.revenueChart.Size = new System.Drawing.Size(1139, 657);
+            this.revenueChart.TabIndex = 0;
+            title2.Name = "Doanh thu công ty tháng";
+            title2.Text = "Doanh thu công ty tháng";
+            this.revenueChart.Titles.Add(title2);
             // 
             // tpCategoryAndItem
             // 
@@ -427,6 +487,7 @@
             this.dgvItem.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvItem.Location = new System.Drawing.Point(2, 3);
             this.dgvItem.Name = "dgvItem";
+            this.dgvItem.ReadOnly = true;
             this.dgvItem.RowHeadersWidth = 62;
             this.dgvItem.RowTemplate.Height = 28;
             this.dgvItem.Size = new System.Drawing.Size(767, 550);
@@ -764,6 +825,7 @@
             this.dgvHall.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHall.Location = new System.Drawing.Point(0, 3);
             this.dgvHall.Name = "dgvHall";
+            this.dgvHall.ReadOnly = true;
             this.dgvHall.RowHeadersWidth = 62;
             this.dgvHall.RowTemplate.Height = 28;
             this.dgvHall.Size = new System.Drawing.Size(792, 665);
@@ -1047,6 +1109,7 @@
             this.dgvAccount.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAccount.Location = new System.Drawing.Point(0, 3);
             this.dgvAccount.Name = "dgvAccount";
+            this.dgvAccount.ReadOnly = true;
             this.dgvAccount.RowHeadersWidth = 62;
             this.dgvAccount.RowTemplate.Height = 28;
             this.dgvAccount.Size = new System.Drawing.Size(798, 662);
@@ -1265,6 +1328,7 @@
             this.dgvCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCustomer.Location = new System.Drawing.Point(0, 3);
             this.dgvCustomer.Name = "dgvCustomer";
+            this.dgvCustomer.ReadOnly = true;
             this.dgvCustomer.RowHeadersWidth = 62;
             this.dgvCustomer.RowTemplate.Height = 28;
             this.dgvCustomer.Size = new System.Drawing.Size(798, 663);
@@ -1286,6 +1350,9 @@
             this.Text = "Admin";
             this.Load += new System.EventHandler(this.FrmAdmin_Load);
             this.tabAdmin.ResumeLayout(false);
+            this.tpRevenue.ResumeLayout(false);
+            this.tpRevenue.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.revenueChart)).EndInit();
             this.tpCategoryAndItem.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel24.ResumeLayout(false);
@@ -1358,7 +1425,7 @@
         #endregion
 
         private System.Windows.Forms.TabControl tabAdmin;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tpRevenue;
         private System.Windows.Forms.TabPage tpCategoryAndItem;
         private System.Windows.Forms.TabPage tpHall;
         private System.Windows.Forms.TabPage tabPage4;
@@ -1469,5 +1536,9 @@
         private System.Windows.Forms.Button btnAddCustomer;
         private System.Windows.Forms.Panel panel33;
         private System.Windows.Forms.DataGridView dgvCustomer;
+        private System.Windows.Forms.DataVisualization.Charting.Chart revenueChart;
+        private System.Windows.Forms.DateTimePicker dtpkRevenue;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label22;
     }
 }

@@ -16,12 +16,37 @@ namespace MarriageHall.GUI
 
         private void FrmAdmin_Load(object sender, EventArgs e)
         {
+            LoadRevenueChart();
             LoadListCategory();
             LoadListItem();
             LoadListHall();
             LoadListAccount();
             LoadListCustomer();
         }
+
+        #region revenue
+        private void LoadRevenueChart()
+        {
+            foreach (var series in revenueChart.Series)
+            {
+                series.Points.Clear();
+            }
+            DateTime dateTimeRevenue = dtpkRevenue.Value;
+            var startDate = new DateTime(dateTimeRevenue.Year, dateTimeRevenue.Month, 1);
+            var endDate = startDate.AddMonths(1).AddDays(-1); 
+            Random rnd = new Random();
+            for (DateTime date = startDate; date <= endDate; date = date.AddDays(1))
+            {
+                revenueChart.Series["Doanh thu"].Points.AddXY(date.ToString("dd"), BLLBooking.Instance.GetRevenueByDate(date) / 1000000);
+
+            }
+        }
+
+        private void dtpkRevenue_ValueChanged(object sender, EventArgs e)
+        {
+            LoadRevenueChart();
+        }
+        #endregion
 
         #region category_and_item
         bool isAddCategory = false;

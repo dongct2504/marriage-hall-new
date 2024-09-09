@@ -20,14 +20,15 @@ namespace MarriageHall.BLL
 
         public DataTable GetPageBooking(DateTime dateTime, int pageIndex)
         {
-            int limit = 1;
+            int limit = 10;
             string query = $"SELECT b.*, c.Name AS CustomerName, c.Phone AS CustomerPhone FROM Bookings b JOIN Customers c ON b.CustomerId = c.Id WHERE ServiceDate = '{dateTime.ToString("yyyy-MM-dd")}' ORDER BY Id OFFSET {(pageIndex - 1) * limit} ROWS FETCH NEXT {limit} ROWS ONLY";
 
             return DataProvider.Instance.GetDataTable(query);
         }
+
         public int GetTotalPageBooking(DateTime dateTime)
         {
-            int limit = 1;
+            int limit = 10;
             string query = $"SELECT COUNT(Id) AS Count FROM Bookings WHERE ServiceDate = '{dateTime.ToString("yyyy-MM-dd")}'";
 
             DataTable data = DataProvider.Instance.GetDataTable(query);
@@ -38,6 +39,15 @@ namespace MarriageHall.BLL
             }
 
             return count % limit == 0 ? count / limit : count / limit + 1;
+        }
+
+        public decimal GetRevenueByDate(DateTime dateTime)
+        {
+            string query = $"SELECT COALESCE(SUM(TotalPrice), 0) AS Revenue FROM Bookings WHERE CreatedAt = '{dateTime.ToString("yyyy-MM-dd")}'";
+
+            DataTable data = DataProvider.Instance.GetDataTable(query);
+
+            return (decimal)data.Rows[0]["Revenue"];
         }
 
         public bool InsertBooking(Booking booking)

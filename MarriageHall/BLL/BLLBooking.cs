@@ -57,7 +57,7 @@ namespace MarriageHall.BLL
 
         public decimal GetRevenueByDate(DateTime dateTime)
         {
-            string query = $"SELECT COALESCE(SUM(TotalPrice), 0) AS Revenue FROM Bookings WHERE CreatedAt = '{dateTime.ToString("yyyy-MM-dd")}'";
+            string query = $"SELECT COALESCE(SUM(TotalPrice), 0) AS Revenue FROM Bookings WHERE CreatedAt = '{dateTime.ToString("yyyy-MM-dd")}' AND Status != {(int)StatusEnum.Cancel}";
 
             DataTable data = DataProvider.Instance.GetDataTable(query);
 

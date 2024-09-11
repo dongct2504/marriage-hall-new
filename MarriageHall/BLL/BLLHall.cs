@@ -25,6 +25,20 @@ namespace MarriageHall.BLL
             return DataProvider.Instance.GetDataTable(query);
         }
 
+        public Hall GetHallByBookingId(int bookingId)
+        {
+            string query = $"SELECT h.* FROM Halls AS h JOIN Bookings AS b ON h.Id = b.HallId AND b.Id = {bookingId}";
+
+            DataTable data = DataProvider.Instance.GetDataTable(query);
+
+            foreach (DataRow row in data.Rows)
+            {
+                return new Hall(row);
+            }
+
+            return null;
+        }
+
         public DataTable GetHallAvailableByDate(DateTime dateTime)
         {
             var shiftList = EnumExtension.GetListDescriptions<ShiftEnum>();

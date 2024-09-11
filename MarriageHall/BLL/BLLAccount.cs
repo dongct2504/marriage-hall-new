@@ -26,6 +26,20 @@ namespace MarriageHall.BLL
             return DataProvider.Instance.GetDataTable(query);
         }
 
+        public Account GetAccountByBookingId(int bookingId)
+        {
+            string query = $"SELECT a.* FROM Accounts AS a JOIN Bookings AS b ON a.Id = b.StaffId AND b.Id = {bookingId}";
+
+            DataTable data = DataProvider.Instance.GetDataTable(query);
+
+            foreach (DataRow row in data.Rows)
+            {
+                return new Account(row);
+            }
+
+            return null;
+        }
+
         public Account GetAccountByUserName(string userName)
         {
             string query = $"SELECT Id, UserName, Name, Gender, Phone, Permission FROM Accounts WHERE UserName = '{userName}'";

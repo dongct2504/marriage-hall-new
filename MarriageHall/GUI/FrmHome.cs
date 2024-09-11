@@ -139,7 +139,8 @@ namespace MarriageHall.GUI
                 int id = int.Parse(txtId.Text);
                 int isPaid = ckbIsPaid.Checked ? 1 : 0;
                 int status = (int)cboStatus.SelectedValue;
-                if (BLLBooking.Instance.UpdateBooking(id, isPaid, status))
+                string note = txtNote.Text;
+                if (BLLBooking.Instance.UpdateBooking(id, isPaid, status, note))
                 {
                     MessageBox.Show("Cập nhật đơn hàng thành công", "Thông báo");
                 }
@@ -148,6 +149,23 @@ namespace MarriageHall.GUI
             {
                 MessageBox.Show("Lỗi: " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnDetail_Click(object sender, EventArgs e)
+        {
+            int bookingId = int.Parse(txtId.Text);
+            FrmBookingDetail frmBookingDetail = new FrmBookingDetail(bookingId);
+            frmBookingDetail.UpdateBooking += FrmBookingDetail_UpdateBooking;
+            Hide();
+            frmBookingDetail.ShowDialog();
+            Show();
+        }
+
+        private void FrmBookingDetail_UpdateBooking(object sender, BookingEvent e)
+        {
+            cboStatus.SelectedValue = (int)e.Booking.Status;
+            ckbIsPaid.Checked = e.Booking.IsPaid;
+            txtNote.Text = e.Booking.Note;
         }
     }
 }

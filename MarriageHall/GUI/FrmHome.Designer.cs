@@ -56,6 +56,8 @@
             this.txtCreatedAt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel29 = new System.Windows.Forms.Panel();
+            this.txtShift = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.ckbIsPaid = new System.Windows.Forms.CheckBox();
             this.panel30 = new System.Windows.Forms.Panel();
             this.cboStatus = new System.Windows.Forms.ComboBox();
@@ -70,8 +72,6 @@
             this.btnDetail = new System.Windows.Forms.Button();
             this.panel33 = new System.Windows.Forms.Panel();
             this.dgvBooking = new System.Windows.Forms.DataGridView();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtShift = new System.Windows.Forms.TextBox();
             this.mnHome.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -207,14 +207,16 @@
             this.panel19.Controls.Add(this.label21);
             this.panel19.Location = new System.Drawing.Point(814, 15);
             this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(333, 86);
+            this.panel19.Size = new System.Drawing.Size(333, 49);
             this.panel19.TabIndex = 3;
             // 
             // dtpkServiceDate
             // 
-            this.dtpkServiceDate.Location = new System.Drawing.Point(20, 45);
+            this.dtpkServiceDate.CustomFormat = "dd/MM/yyyy";
+            this.dtpkServiceDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpkServiceDate.Location = new System.Drawing.Point(160, 8);
             this.dtpkServiceDate.Name = "dtpkServiceDate";
-            this.dtpkServiceDate.Size = new System.Drawing.Size(297, 26);
+            this.dtpkServiceDate.Size = new System.Drawing.Size(157, 26);
             this.dtpkServiceDate.TabIndex = 8;
             this.dtpkServiceDate.ValueChanged += new System.EventHandler(this.dtpkServiceDate_ValueChanged);
             // 
@@ -239,9 +241,9 @@
             this.panel26.Controls.Add(this.panel32);
             this.panel26.Controls.Add(this.btnUpdate);
             this.panel26.Controls.Add(this.btnDetail);
-            this.panel26.Location = new System.Drawing.Point(814, 107);
+            this.panel26.Location = new System.Drawing.Point(814, 70);
             this.panel26.Name = "panel26";
-            this.panel26.Size = new System.Drawing.Size(333, 577);
+            this.panel26.Size = new System.Drawing.Size(333, 614);
             this.panel26.TabIndex = 4;
             // 
             // panel6
@@ -310,7 +312,6 @@
             this.txtNote.Location = new System.Drawing.Point(102, 12);
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
-            this.txtNote.ReadOnly = true;
             this.txtNote.Size = new System.Drawing.Size(210, 96);
             this.txtNote.TabIndex = 0;
             // 
@@ -359,6 +360,23 @@
             this.panel29.Size = new System.Drawing.Size(327, 48);
             this.panel29.TabIndex = 3;
             // 
+            // txtShift
+            // 
+            this.txtShift.Location = new System.Drawing.Point(62, 10);
+            this.txtShift.Name = "txtShift";
+            this.txtShift.ReadOnly = true;
+            this.txtShift.Size = new System.Drawing.Size(70, 26);
+            this.txtShift.TabIndex = 1;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(13, 13);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(33, 20);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Ca:";
+            // 
             // ckbIsPaid
             // 
             this.ckbIsPaid.AutoSize = true;
@@ -381,9 +399,9 @@
             // cboStatus
             // 
             this.cboStatus.FormattingEnabled = true;
-            this.cboStatus.Location = new System.Drawing.Point(185, 13);
+            this.cboStatus.Location = new System.Drawing.Point(155, 13);
             this.cboStatus.Name = "cboStatus";
-            this.cboStatus.Size = new System.Drawing.Size(127, 28);
+            this.cboStatus.Size = new System.Drawing.Size(157, 28);
             this.cboStatus.TabIndex = 0;
             // 
             // label25
@@ -450,7 +468,7 @@
             // btnUpdate
             // 
             this.btnUpdate.Enabled = false;
-            this.btnUpdate.Location = new System.Drawing.Point(201, 523);
+            this.btnUpdate.Location = new System.Drawing.Point(205, 551);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(100, 40);
             this.btnUpdate.TabIndex = 7;
@@ -461,12 +479,13 @@
             // btnDetail
             // 
             this.btnDetail.Enabled = false;
-            this.btnDetail.Location = new System.Drawing.Point(52, 523);
+            this.btnDetail.Location = new System.Drawing.Point(57, 551);
             this.btnDetail.Name = "btnDetail";
             this.btnDetail.Size = new System.Drawing.Size(100, 40);
             this.btnDetail.TabIndex = 5;
             this.btnDetail.Text = "Chi tiết";
             this.btnDetail.UseVisualStyleBackColor = true;
+            this.btnDetail.Click += new System.EventHandler(this.btnDetail_Click);
             // 
             // panel33
             // 
@@ -490,23 +509,6 @@
             this.dgvBooking.Size = new System.Drawing.Size(798, 594);
             this.dgvBooking.TabIndex = 0;
             this.dgvBooking.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBooking_CellContentClick);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 13);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(33, 20);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Ca:";
-            // 
-            // txtShift
-            // 
-            this.txtShift.Location = new System.Drawing.Point(62, 10);
-            this.txtShift.Name = "txtShift";
-            this.txtShift.ReadOnly = true;
-            this.txtShift.Size = new System.Drawing.Size(70, 26);
-            this.txtShift.TabIndex = 1;
             // 
             // FrmHome
             // 

@@ -24,6 +24,20 @@ namespace MarriageHall.BLL
             return DataProvider.Instance.GetDataTable(query);
         }
 
+        public Customer GetCustomerByBookingId(int bookingId)
+        {
+            string query = $"SELECT c.* FROM Customers AS c JOIN Bookings AS b ON c.Id = b.CustomerId AND b.Id = {bookingId}";
+
+            DataTable data = DataProvider.Instance.GetDataTable(query);
+
+            foreach (DataRow row in data.Rows)
+            {
+                return new Customer(row);
+            }
+
+            return null;
+        }
+
         public DataTable SearchCustomerByNameAndPhone(string search)
         {
             string query = $"SELECT * FROM Customers WHERE Name LIKE N'%{search} %' OR Phone LIKE '%{search}%'";

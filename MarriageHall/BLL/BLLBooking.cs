@@ -41,6 +41,20 @@ namespace MarriageHall.BLL
             return count % limit == 0 ? count / limit : count / limit + 1;
         }
 
+        public Booking GetBookingById(int id)
+        {
+            string query = $"SELECT * FROM Bookings WHERE Id = {id}";
+
+            DataTable data = DataProvider.Instance.GetDataTable(query);
+
+            foreach (DataRow row in data.Rows)
+            {
+                return new Booking(row);
+            }
+
+            return null;
+        }
+
         public decimal GetRevenueByDate(DateTime dateTime)
         {
             string query = $"SELECT COALESCE(SUM(TotalPrice), 0) AS Revenue FROM Bookings WHERE CreatedAt = '{dateTime.ToString("yyyy-MM-dd")}'";
@@ -58,9 +72,9 @@ namespace MarriageHall.BLL
             return DataProvider.Instance.RunQuery(query);
         }
 
-        public bool UpdateBooking(int id, int isPaid, int status)
+        public bool UpdateBooking(int id, int isPaid, int status, string note)
         {
-            string query = $"UPDATE Bookings SET IsPaid = {isPaid}, Status = {status} WHERE Id = {id}";
+            string query = $"UPDATE Bookings SET IsPaid = {isPaid}, Status = {status}, Note = '{note}' WHERE Id = {id}";
 
             return DataProvider.Instance.RunQuery(query);
         }

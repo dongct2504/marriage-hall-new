@@ -215,7 +215,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(336, 86);
+            this.label10.Location = new System.Drawing.Point(333, 20);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(33, 20);
             this.label10.TabIndex = 12;
@@ -232,7 +232,7 @@
             // 
             // btnSelectHall
             // 
-            this.btnSelectHall.Location = new System.Drawing.Point(443, 139);
+            this.btnSelectHall.Location = new System.Drawing.Point(440, 136);
             this.btnSelectHall.Name = "btnSelectHall";
             this.btnSelectHall.Size = new System.Drawing.Size(120, 40);
             this.btnSelectHall.TabIndex = 4;
@@ -243,7 +243,7 @@
             // cboShift
             // 
             this.cboShift.FormattingEnabled = true;
-            this.cboShift.Location = new System.Drawing.Point(404, 83);
+            this.cboShift.Location = new System.Drawing.Point(401, 17);
             this.cboShift.Name = "cboShift";
             this.cboShift.Size = new System.Drawing.Size(106, 28);
             this.cboShift.TabIndex = 2;
@@ -251,7 +251,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(13, 149);
+            this.label8.Location = new System.Drawing.Point(336, 86);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(38, 20);
             this.label8.TabIndex = 10;
@@ -267,18 +267,20 @@
             // 
             // txtHallPrice
             // 
-            this.txtHallPrice.Location = new System.Drawing.Point(103, 146);
+            this.txtHallPrice.Location = new System.Drawing.Point(401, 83);
             this.txtHallPrice.Name = "txtHallPrice";
             this.txtHallPrice.ReadOnly = true;
-            this.txtHallPrice.Size = new System.Drawing.Size(137, 26);
+            this.txtHallPrice.Size = new System.Drawing.Size(177, 26);
             this.txtHallPrice.TabIndex = 3;
             // 
             // dtpkHallServiceDate
             // 
-            this.dtpkHallServiceDate.Location = new System.Drawing.Point(155, 15);
+            this.dtpkHallServiceDate.CustomFormat = "dd/MM/yyyy";
+            this.dtpkHallServiceDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpkHallServiceDate.Location = new System.Drawing.Point(147, 15);
             this.dtpkHallServiceDate.MinDate = new System.DateTime(2024, 9, 4, 12, 15, 30, 0);
             this.dtpkHallServiceDate.Name = "dtpkHallServiceDate";
-            this.dtpkHallServiceDate.Size = new System.Drawing.Size(294, 26);
+            this.dtpkHallServiceDate.Size = new System.Drawing.Size(144, 26);
             this.dtpkHallServiceDate.TabIndex = 0;
             this.dtpkHallServiceDate.Value = new System.DateTime(2024, 9, 4, 12, 15, 30, 0);
             this.dtpkHallServiceDate.ValueChanged += new System.EventHandler(this.dtpkHallServiceDate_ValueChanged);
@@ -605,17 +607,17 @@
             // 
             // columnHeader1
             // 
-            this.columnHeader1.Text = "Tên sản phẩm";
+            this.columnHeader1.Text = "Tên sản phẩm      ";
             this.columnHeader1.Width = 157;
             // 
             // columnHeader2
             // 
-            this.columnHeader2.Text = "Đơn giá";
+            this.columnHeader2.Text = "Đơn giá        ";
             this.columnHeader2.Width = 115;
             // 
             // columnHeader3
             // 
-            this.columnHeader3.Text = "Số lượng";
+            this.columnHeader3.Text = "Số lượng      ";
             this.columnHeader3.Width = 85;
             // 
             // columnHeader4

@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.tabAdmin = new System.Windows.Forms.TabControl();
             this.tpRevenue = new System.Windows.Forms.TabPage();
             this.label23 = new System.Windows.Forms.Label();
@@ -227,9 +227,9 @@
             this.label23.AutoSize = true;
             this.label23.Location = new System.Drawing.Point(938, 603);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(50, 20);
+            this.label23.Size = new System.Drawing.Size(43, 20);
             this.label23.TabIndex = 3;
-            this.label23.Text = "tháng";
+            this.label23.Text = "ngày";
             // 
             // label22
             // 
@@ -252,21 +252,21 @@
             // 
             // revenueChart
             // 
-            chartArea2.Name = "ChartArea1";
-            this.revenueChart.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.revenueChart.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            this.revenueChart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.revenueChart.Legends.Add(legend1);
             this.revenueChart.Location = new System.Drawing.Point(6, 19);
             this.revenueChart.Name = "revenueChart";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Doanh thu";
-            this.revenueChart.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Doanh thu";
+            this.revenueChart.Series.Add(series1);
             this.revenueChart.Size = new System.Drawing.Size(1139, 657);
             this.revenueChart.TabIndex = 0;
-            title2.Name = "Doanh thu công ty tháng";
-            title2.Text = "Doanh thu công ty tháng";
-            this.revenueChart.Titles.Add(title2);
+            title1.Name = "Doanh thu công ty tháng";
+            title1.Text = "Doanh thu công ty tháng";
+            this.revenueChart.Titles.Add(title1);
             // 
             // tpCategoryAndItem
             // 

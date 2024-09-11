@@ -1,4 +1,6 @@
-﻿namespace MarriageHall.DTO
+﻿using System.Data;
+
+namespace MarriageHall.DTO
 {
     public class BookingDetail
     {
@@ -11,6 +13,20 @@
         public decimal TotalPrice
         {
             get { return Quantity * Price; }
+        }
+
+        public BookingDetail()
+        {
+        }
+
+        public BookingDetail(DataRow row)
+        {
+            this.Id = (int)row["Id"];
+            this.BookingId = (int)row["BookingId"];
+            this.ItemId = (int)row["ItemId"];
+            this.Quantity = (int)row["Quantity"];
+            this.Price = (decimal)row["Price"];
+            this.ItemName = row["ItemName"].ToString();
         }
     }
 }

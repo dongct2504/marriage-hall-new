@@ -209,7 +209,7 @@ namespace MarriageHall.GUI
         private void btnBooking_Click(object sender, EventArgs e)
         {
             Booking booking = new Booking();
-            if (!string.IsNullOrEmpty(txtSelectHallName.Text))
+            if (!string.IsNullOrEmpty(txtSelectShift.Text))
             {
                 booking.HallId = (int)cboHall.SelectedValue;
                 booking.ServiceDate = dtpkHallServiceDate.Value;

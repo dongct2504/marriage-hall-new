@@ -67,9 +67,8 @@ namespace MarriageHall.BLL
 
         public bool InsertBooking(Booking booking)
         {
-            CultureInfo usCulture = new CultureInfo("en-US");
             int isPaid = booking.IsPaid ? 1 : 0;
-            string query = $"INSERT INTO Bookings (HallId, CustomerId, StaffId, NumberOfPeople, Status, Shift, Note, Discount, TotalPrice, IsPaid, ServiceDate, CreatedAt) VALUES ({booking.HallId}, {booking.CustomerId}, {booking.StaffId}, {booking.NumberOfPeople}, {(int)StatusEnum.New}, {(int)booking.Shift}, '{booking.Note}', {booking.Discount}, {booking.TotalPrice.ToString(usCulture)}, {isPaid}, '{booking.ServiceDate.ToString("yyyy-MM-dd")}', '{DateTime.Today.ToString("yyyy-MM-dd")}')";
+            string query = $"INSERT INTO Bookings (HallId, CustomerId, StaffId, NumberOfPeople, Status, Shift, Note, Discount, TotalPrice, IsPaid, ServiceDate, CreatedAt) VALUES ({booking.HallId}, {booking.CustomerId}, {booking.StaffId}, {booking.NumberOfPeople}, {(int)StatusEnum.New}, {(int)booking.Shift}, '{booking.Note}', {booking.Discount}, {booking.TotalPrice.ToString().Replace(",", ".")}, {isPaid}, '{booking.ServiceDate.ToString("yyyy-MM-dd")}', '{DateTime.Today.ToString("yyyy-MM-dd")}')";
 
             return DataProvider.Instance.RunQuery(query);
         }

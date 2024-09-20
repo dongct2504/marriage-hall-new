@@ -82,6 +82,7 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnMomo = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -450,6 +451,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnMomo);
             this.panel2.Controls.Add(this.label17);
             this.panel2.Controls.Add(this.txtSelectDate);
             this.panel2.Controls.Add(this.label16);
@@ -531,7 +533,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(216, 136);
+            this.label13.Location = new System.Drawing.Point(162, 137);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(75, 20);
             this.label13.TabIndex = 14;
@@ -549,7 +551,7 @@
             // 
             this.nmDiscount.Location = new System.Drawing.Point(20, 160);
             this.nmDiscount.Name = "nmDiscount";
-            this.nmDiscount.Size = new System.Drawing.Size(106, 26);
+            this.nmDiscount.Size = new System.Drawing.Size(87, 26);
             this.nmDiscount.TabIndex = 4;
             this.nmDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nmDiscount.ValueChanged += new System.EventHandler(this.nmDiscount_ValueChanged);
@@ -557,7 +559,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(35, 136);
+            this.label12.Location = new System.Drawing.Point(26, 137);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(72, 20);
             this.label12.TabIndex = 13;
@@ -565,7 +567,7 @@
             // 
             // txtTotalPrice
             // 
-            this.txtTotalPrice.Location = new System.Drawing.Point(181, 159);
+            this.txtTotalPrice.Location = new System.Drawing.Point(122, 160);
             this.txtTotalPrice.Name = "txtTotalPrice";
             this.txtTotalPrice.ReadOnly = true;
             this.txtTotalPrice.Size = new System.Drawing.Size(149, 26);
@@ -573,10 +575,10 @@
             // 
             // btnBooking
             // 
-            this.btnBooking.Location = new System.Drawing.Point(386, 152);
+            this.btnBooking.Location = new System.Drawing.Point(407, 152);
             this.btnBooking.Name = "btnBooking";
-            this.btnBooking.Size = new System.Drawing.Size(120, 40);
-            this.btnBooking.TabIndex = 6;
+            this.btnBooking.Size = new System.Drawing.Size(99, 40);
+            this.btnBooking.TabIndex = 7;
             this.btnBooking.Text = "Đặt";
             this.btnBooking.UseVisualStyleBackColor = true;
             this.btnBooking.Click += new System.EventHandler(this.btnBooking_Click);
@@ -624,6 +626,16 @@
             // 
             this.columnHeader4.Text = "Thành tiền";
             this.columnHeader4.Width = 147;
+            // 
+            // btnMomo
+            // 
+            this.btnMomo.Location = new System.Drawing.Point(287, 152);
+            this.btnMomo.Name = "btnMomo";
+            this.btnMomo.Size = new System.Drawing.Size(99, 40);
+            this.btnMomo.TabIndex = 6;
+            this.btnMomo.Text = "Momo";
+            this.btnMomo.UseVisualStyleBackColor = true;
+            this.btnMomo.Click += new System.EventHandler(this.btnMomo_Click);
             // 
             // FrmBooking
             // 
@@ -715,5 +727,6 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.NumericUpDown nmNumberOfPeople;
         private System.Windows.Forms.CheckBox ckbIsPaid;
+        private System.Windows.Forms.Button btnMomo;
     }
 }

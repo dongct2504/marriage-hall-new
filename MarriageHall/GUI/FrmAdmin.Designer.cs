@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.tabAdmin = new System.Windows.Forms.TabControl();
             this.tpRevenue = new System.Windows.Forms.TabPage();
             this.label23 = new System.Windows.Forms.Label();
@@ -40,6 +40,7 @@
             this.revenueChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tpCategoryAndItem = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnStatisticsItem = new System.Windows.Forms.Button();
             this.panel24 = new System.Windows.Forms.Panel();
             this.txtItemSearchName = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -252,21 +253,21 @@
             // 
             // revenueChart
             // 
-            chartArea1.Name = "ChartArea1";
-            this.revenueChart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.revenueChart.Legends.Add(legend1);
+            chartArea3.Name = "ChartArea1";
+            this.revenueChart.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.revenueChart.Legends.Add(legend3);
             this.revenueChart.Location = new System.Drawing.Point(6, 19);
             this.revenueChart.Name = "revenueChart";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Doanh thu";
-            this.revenueChart.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Doanh thu";
+            this.revenueChart.Series.Add(series3);
             this.revenueChart.Size = new System.Drawing.Size(1139, 657);
             this.revenueChart.TabIndex = 0;
-            title1.Name = "Doanh thu công ty tháng";
-            title1.Text = "Doanh thu công ty tháng";
-            this.revenueChart.Titles.Add(title1);
+            title3.Name = "Doanh thu công ty tháng";
+            title3.Text = "Doanh thu công ty tháng";
+            this.revenueChart.Titles.Add(title3);
             // 
             // tpCategoryAndItem
             // 
@@ -283,6 +284,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.btnStatisticsItem);
             this.panel3.Controls.Add(this.panel24);
             this.panel3.Controls.Add(this.btnDeleteItem);
             this.panel3.Controls.Add(this.btnSaveItem);
@@ -296,6 +298,16 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(363, 668);
             this.panel3.TabIndex = 1;
+            // 
+            // btnStatisticsItem
+            // 
+            this.btnStatisticsItem.Location = new System.Drawing.Point(57, 576);
+            this.btnStatisticsItem.Name = "btnStatisticsItem";
+            this.btnStatisticsItem.Size = new System.Drawing.Size(257, 40);
+            this.btnStatisticsItem.TabIndex = 9;
+            this.btnStatisticsItem.Text = "Thống kê";
+            this.btnStatisticsItem.UseVisualStyleBackColor = true;
+            this.btnStatisticsItem.Click += new System.EventHandler(this.btnStatisticsItem_Click);
             // 
             // panel24
             // 
@@ -325,7 +337,7 @@
             // 
             // btnDeleteItem
             // 
-            this.btnDeleteItem.Location = new System.Drawing.Point(215, 462);
+            this.btnDeleteItem.Location = new System.Drawing.Point(214, 434);
             this.btnDeleteItem.Name = "btnDeleteItem";
             this.btnDeleteItem.Size = new System.Drawing.Size(100, 40);
             this.btnDeleteItem.TabIndex = 7;
@@ -335,7 +347,7 @@
             // 
             // btnSaveItem
             // 
-            this.btnSaveItem.Location = new System.Drawing.Point(215, 534);
+            this.btnSaveItem.Location = new System.Drawing.Point(214, 506);
             this.btnSaveItem.Name = "btnSaveItem";
             this.btnSaveItem.Size = new System.Drawing.Size(100, 40);
             this.btnSaveItem.TabIndex = 8;
@@ -347,7 +359,7 @@
             // 
             this.panel8.Controls.Add(this.nmItemPrice);
             this.panel8.Controls.Add(this.label7);
-            this.panel8.Location = new System.Drawing.Point(14, 375);
+            this.panel8.Location = new System.Drawing.Point(14, 336);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(337, 48);
             this.panel8.TabIndex = 4;
@@ -376,7 +388,7 @@
             // 
             // btnEditItem
             // 
-            this.btnEditItem.Location = new System.Drawing.Point(58, 534);
+            this.btnEditItem.Location = new System.Drawing.Point(57, 506);
             this.btnEditItem.Name = "btnEditItem";
             this.btnEditItem.Size = new System.Drawing.Size(100, 40);
             this.btnEditItem.TabIndex = 6;
@@ -388,7 +400,7 @@
             // 
             this.panel7.Controls.Add(this.cboItemCategory);
             this.panel7.Controls.Add(this.label6);
-            this.panel7.Location = new System.Drawing.Point(14, 321);
+            this.panel7.Location = new System.Drawing.Point(14, 282);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(337, 48);
             this.panel7.TabIndex = 3;
@@ -412,7 +424,7 @@
             // 
             // btnAddItem
             // 
-            this.btnAddItem.Location = new System.Drawing.Point(58, 462);
+            this.btnAddItem.Location = new System.Drawing.Point(57, 434);
             this.btnAddItem.Name = "btnAddItem";
             this.btnAddItem.Size = new System.Drawing.Size(100, 40);
             this.btnAddItem.TabIndex = 5;
@@ -424,7 +436,7 @@
             // 
             this.panel6.Controls.Add(this.txtItemName);
             this.panel6.Controls.Add(this.label5);
-            this.panel6.Location = new System.Drawing.Point(14, 267);
+            this.panel6.Location = new System.Drawing.Point(14, 228);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(337, 48);
             this.panel6.TabIndex = 2;
@@ -449,7 +461,7 @@
             // 
             this.panel5.Controls.Add(this.txtItemId);
             this.panel5.Controls.Add(this.label4);
-            this.panel5.Location = new System.Drawing.Point(14, 213);
+            this.panel5.Location = new System.Drawing.Point(14, 174);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(337, 48);
             this.panel5.TabIndex = 1;
@@ -1540,5 +1552,6 @@
         private System.Windows.Forms.DateTimePicker dtpkRevenue;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Button btnStatisticsItem;
     }
 }

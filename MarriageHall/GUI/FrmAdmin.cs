@@ -316,6 +316,12 @@ namespace MarriageHall.GUI
         {
             dgvItem.DataSource = BLLItem.Instance.SearchItemByName(txtItemSearchName.Text);
         }
+
+        private void btnStatisticsItem_Click(object sender, EventArgs e)
+        {
+            FrmStatisticsItem frmStatisticsItem = new FrmStatisticsItem();
+            frmStatisticsItem.ShowDialog();
+        }
         #endregion
 
         #region hall

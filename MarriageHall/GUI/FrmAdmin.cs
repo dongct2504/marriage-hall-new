@@ -8,7 +8,6 @@ namespace MarriageHall.GUI
 {
     public partial class FrmAdmin : Form
     {
-        BindingSource categoryList = new BindingSource();
         public FrmAdmin()
         {
             InitializeComponent();

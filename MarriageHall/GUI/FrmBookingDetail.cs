@@ -10,6 +10,7 @@ namespace MarriageHall.GUI
     public partial class FrmBookingDetail : Form
     {
         public int BookingId { get; set; }
+        decimal totalPricePerTable = 0;
 
         public FrmBookingDetail(int bookingId)
         {
@@ -58,7 +59,7 @@ namespace MarriageHall.GUI
             txtBookingId.Text = booking.Id.ToString();
             txtServiceDate.Text = booking.ServiceDate.ToString("d");
             txtShift.Text = EnumExtension.GetDescription(booking.Shift);
-            txtNumberOfPeople.Text = booking.NumberOfPeople.ToString();
+            txtNumberOfTables.Text = booking.NumberOfTables.ToString();
             txtCreatedAt.Text = booking.CreatedAt.ToString("d");
             txtNote.Text = booking.Note;
             txtDiscount.Text = booking.Discount.ToString();
@@ -77,8 +78,11 @@ namespace MarriageHall.GUI
                 listViewItem.SubItems.Add(bookingDetail.Price.ToString("c"));
                 listViewItem.SubItems.Add(bookingDetail.Quantity.ToString());
                 listViewItem.SubItems.Add(bookingDetail.TotalPrice.ToString("c"));
+                totalPricePerTable += bookingDetail.TotalPrice;
                 lsvBill.Items.Add(listViewItem);
             }
+
+            txtTotalPricePerTables.Text = totalPricePerTable.ToString("c");
         }
 
         private void btnExit_Click(object sender, EventArgs e)

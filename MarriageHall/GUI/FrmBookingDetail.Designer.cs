@@ -30,10 +30,12 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtNumberOfTables = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtCreatedAt = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtNumberOfPeople = new System.Windows.Forms.TextBox();
+            this.txtTotalPricePerTables = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtBookingId = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -85,10 +87,12 @@
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.label11);
+            this.panel5.Controls.Add(this.txtNumberOfTables);
             this.panel5.Controls.Add(this.label10);
             this.panel5.Controls.Add(this.txtCreatedAt);
             this.panel5.Controls.Add(this.label9);
-            this.panel5.Controls.Add(this.txtNumberOfPeople);
+            this.panel5.Controls.Add(this.txtTotalPricePerTables);
             this.panel5.Controls.Add(this.label8);
             this.panel5.Controls.Add(this.txtBookingId);
             this.panel5.Controls.Add(this.label6);
@@ -123,10 +127,27 @@
             this.panel5.Size = new System.Drawing.Size(499, 708);
             this.panel5.TabIndex = 0;
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(18, 349);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(64, 20);
+            this.label11.TabIndex = 61;
+            this.label11.Text = "Số bàn:";
+            // 
+            // txtNumberOfTables
+            // 
+            this.txtNumberOfTables.Location = new System.Drawing.Point(118, 346);
+            this.txtNumberOfTables.Name = "txtNumberOfTables";
+            this.txtNumberOfTables.ReadOnly = true;
+            this.txtNumberOfTables.Size = new System.Drawing.Size(110, 26);
+            this.txtNumberOfTables.TabIndex = 10;
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(276, 359);
+            this.label10.Location = new System.Drawing.Point(256, 190);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(76, 20);
             this.label10.TabIndex = 59;
@@ -134,28 +155,28 @@
             // 
             // txtCreatedAt
             // 
-            this.txtCreatedAt.Location = new System.Drawing.Point(384, 356);
+            this.txtCreatedAt.Location = new System.Drawing.Point(356, 187);
             this.txtCreatedAt.Name = "txtCreatedAt";
             this.txtCreatedAt.ReadOnly = true;
-            this.txtCreatedAt.Size = new System.Drawing.Size(99, 26);
-            this.txtCreatedAt.TabIndex = 10;
+            this.txtCreatedAt.Size = new System.Drawing.Size(127, 26);
+            this.txtCreatedAt.TabIndex = 5;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(18, 356);
+            this.label9.Location = new System.Drawing.Point(18, 394);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(123, 20);
+            this.label9.Size = new System.Drawing.Size(252, 20);
             this.label9.TabIndex = 57;
-            this.label9.Text = "Số lượng khách:";
+            this.label9.Text = "Tiền các món ăn phục vụ mỗi bàn: ";
             // 
-            // txtNumberOfPeople
+            // txtTotalPricePerTables
             // 
-            this.txtNumberOfPeople.Location = new System.Drawing.Point(162, 353);
-            this.txtNumberOfPeople.Name = "txtNumberOfPeople";
-            this.txtNumberOfPeople.ReadOnly = true;
-            this.txtNumberOfPeople.Size = new System.Drawing.Size(66, 26);
-            this.txtNumberOfPeople.TabIndex = 9;
+            this.txtTotalPricePerTables.Location = new System.Drawing.Point(282, 391);
+            this.txtTotalPricePerTables.Name = "txtTotalPricePerTables";
+            this.txtTotalPricePerTables.ReadOnly = true;
+            this.txtTotalPricePerTables.Size = new System.Drawing.Size(201, 26);
+            this.txtTotalPricePerTables.TabIndex = 11;
             // 
             // label8
             // 
@@ -213,7 +234,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(383, 658);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(100, 40);
-            this.btnUpdate.TabIndex = 17;
+            this.btnUpdate.TabIndex = 18;
             this.btnUpdate.Text = "Cập nhật";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -223,7 +244,7 @@
             this.btnExit.Location = new System.Drawing.Point(234, 658);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(100, 40);
-            this.btnExit.TabIndex = 16;
+            this.btnExit.TabIndex = 17;
             this.btnExit.Text = "Thoát";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
@@ -234,7 +255,7 @@
             this.cboStatus.Location = new System.Drawing.Point(132, 546);
             this.cboStatus.Name = "cboStatus";
             this.cboStatus.Size = new System.Drawing.Size(150, 28);
-            this.cboStatus.TabIndex = 12;
+            this.cboStatus.TabIndex = 13;
             // 
             // label25
             // 
@@ -248,7 +269,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(18, 433);
+            this.label7.Location = new System.Drawing.Point(18, 448);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(68, 20);
             this.label7.TabIndex = 43;
@@ -256,11 +277,11 @@
             // 
             // txtNote
             // 
-            this.txtNote.Location = new System.Drawing.Point(132, 430);
+            this.txtNote.Location = new System.Drawing.Point(132, 445);
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
             this.txtNote.Size = new System.Drawing.Size(351, 82);
-            this.txtNote.TabIndex = 11;
+            this.txtNote.TabIndex = 12;
             // 
             // label4
             // 
@@ -277,7 +298,7 @@
             this.txtDiscount.Name = "txtDiscount";
             this.txtDiscount.ReadOnly = true;
             this.txtDiscount.Size = new System.Drawing.Size(54, 26);
-            this.txtDiscount.TabIndex = 14;
+            this.txtDiscount.TabIndex = 15;
             // 
             // label3
             // 
@@ -294,7 +315,7 @@
             this.txtTotalPrice.Name = "txtTotalPrice";
             this.txtTotalPrice.ReadOnly = true;
             this.txtTotalPrice.Size = new System.Drawing.Size(143, 26);
-            this.txtTotalPrice.TabIndex = 15;
+            this.txtTotalPrice.TabIndex = 16;
             // 
             // ckbIsPaid
             // 
@@ -302,7 +323,7 @@
             this.ckbIsPaid.Location = new System.Drawing.Point(326, 550);
             this.ckbIsPaid.Name = "ckbIsPaid";
             this.ckbIsPaid.Size = new System.Drawing.Size(137, 24);
-            this.ckbIsPaid.TabIndex = 13;
+            this.ckbIsPaid.TabIndex = 14;
             this.ckbIsPaid.Text = "Đã thanh toán";
             this.ckbIsPaid.UseVisualStyleBackColor = true;
             // 
@@ -355,7 +376,7 @@
             this.txtServiceDate.Name = "txtServiceDate";
             this.txtServiceDate.ReadOnly = true;
             this.txtServiceDate.Size = new System.Drawing.Size(110, 26);
-            this.txtServiceDate.TabIndex = 5;
+            this.txtServiceDate.TabIndex = 6;
             // 
             // label16
             // 
@@ -381,7 +402,7 @@
             this.txtHallPrice.Name = "txtHallPrice";
             this.txtHallPrice.ReadOnly = true;
             this.txtHallPrice.Size = new System.Drawing.Size(127, 26);
-            this.txtHallPrice.TabIndex = 8;
+            this.txtHallPrice.TabIndex = 9;
             // 
             // txtShift
             // 
@@ -389,7 +410,7 @@
             this.txtShift.Name = "txtShift";
             this.txtShift.ReadOnly = true;
             this.txtShift.Size = new System.Drawing.Size(79, 26);
-            this.txtShift.TabIndex = 6;
+            this.txtShift.TabIndex = 7;
             // 
             // label14
             // 
@@ -406,7 +427,7 @@
             this.txtHallName.Name = "txtHallName";
             this.txtHallName.ReadOnly = true;
             this.txtHallName.Size = new System.Drawing.Size(137, 26);
-            this.txtHallName.TabIndex = 7;
+            this.txtHallName.TabIndex = 8;
             // 
             // panel2
             // 
@@ -512,10 +533,12 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtCreatedAt;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtNumberOfPeople;
+        private System.Windows.Forms.TextBox txtTotalPricePerTables;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtNumberOfTables;
     }
 }

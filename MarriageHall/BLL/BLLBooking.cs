@@ -3,7 +3,6 @@ using MarriageHall.DTO;
 using MarriageHall.DTO.Enums;
 using System;
 using System.Data;
-using System.Globalization;
 using System.Windows.Forms;
 
 namespace MarriageHall.BLL
@@ -68,7 +67,7 @@ namespace MarriageHall.BLL
         public bool InsertBooking(Booking booking)
         {
             int isPaid = booking.IsPaid ? 1 : 0;
-            string query = $"INSERT INTO Bookings (HallId, CustomerId, StaffId, NumberOfPeople, Status, Shift, Note, Discount, TotalPrice, IsPaid, ServiceDate, CreatedAt) VALUES ({booking.HallId}, {booking.CustomerId}, {booking.StaffId}, {booking.NumberOfPeople}, {(int)StatusEnum.New}, {(int)booking.Shift}, '{booking.Note}', {booking.Discount}, {booking.TotalPrice.ToString().Replace(",", ".")}, {isPaid}, '{booking.ServiceDate.ToString("yyyy-MM-dd")}', '{DateTime.Today.ToString("yyyy-MM-dd")}')";
+            string query = $"INSERT INTO Bookings (HallId, CustomerId, StaffId, NumberOfTables, Status, Shift, Note, Discount, TotalPrice, IsPaid, ServiceDate, CreatedAt) VALUES ({booking.HallId}, {booking.CustomerId}, {booking.StaffId}, {booking.NumberOfTables}, {(int)StatusEnum.New}, {(int)booking.Shift}, '{booking.Note}', {booking.Discount}, {booking.TotalPrice.ToString().Replace(",", ".")}, {isPaid}, '{booking.ServiceDate.ToString("yyyy-MM-dd")}', '{DateTime.Today.ToString("yyyy-MM-dd")}')";
 
             return DataProvider.Instance.RunQuery(query);
         }

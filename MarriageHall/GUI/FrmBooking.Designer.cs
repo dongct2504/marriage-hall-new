@@ -31,12 +31,12 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.ckbIsPaid = new System.Windows.Forms.CheckBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.nmNumberOfPeople = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.txtNote = new System.Windows.Forms.TextBox();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.label20 = new System.Windows.Forms.Label();
+            this.txtHallNumberOfTables = new System.Windows.Forms.TextBox();
+            this.btnDeleteHall = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -48,11 +48,14 @@
             this.dtpkHallServiceDate = new System.Windows.Forms.DateTimePicker();
             this.panel4 = new System.Windows.Forms.Panel();
             this.txtCustomerPhone = new System.Windows.Forms.TextBox();
+            this.ckbIsPaid = new System.Windows.Forms.CheckBox();
             this.txtCustomerName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel19 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
+            this.nmNumberOfTables = new System.Windows.Forms.NumericUpDown();
+            this.label18 = new System.Windows.Forms.Label();
             this.btnDeleteItem = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -63,6 +66,9 @@
             this.cboItem = new System.Windows.Forms.ComboBox();
             this.cboCategory = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtTotalPricePerTable = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.btnMomo = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
             this.txtSelectDate = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -82,14 +88,13 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnMomo = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nmNumberOfPeople)).BeginInit();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel19.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmNumberOfTables)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmItemQuantity)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmDiscount)).BeginInit();
@@ -119,9 +124,6 @@
             // 
             // panel6
             // 
-            this.panel6.Controls.Add(this.ckbIsPaid);
-            this.panel6.Controls.Add(this.label18);
-            this.panel6.Controls.Add(this.nmNumberOfPeople);
             this.panel6.Controls.Add(this.label7);
             this.panel6.Controls.Add(this.txtNote);
             this.panel6.Location = new System.Drawing.Point(3, 523);
@@ -129,52 +131,10 @@
             this.panel6.Size = new System.Drawing.Size(607, 185);
             this.panel6.TabIndex = 3;
             // 
-            // ckbIsPaid
-            // 
-            this.ckbIsPaid.AutoSize = true;
-            this.ckbIsPaid.Location = new System.Drawing.Point(340, 22);
-            this.ckbIsPaid.Name = "ckbIsPaid";
-            this.ckbIsPaid.Size = new System.Drawing.Size(156, 24);
-            this.ckbIsPaid.TabIndex = 1;
-            this.ckbIsPaid.Text = "Thanh toán trước";
-            this.ckbIsPaid.UseVisualStyleBackColor = true;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(13, 22);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(109, 20);
-            this.label18.TabIndex = 10;
-            this.label18.Text = "Số khách mời:";
-            // 
-            // nmNumberOfPeople
-            // 
-            this.nmNumberOfPeople.Location = new System.Drawing.Point(147, 20);
-            this.nmNumberOfPeople.Maximum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            0});
-            this.nmNumberOfPeople.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nmNumberOfPeople.Name = "nmNumberOfPeople";
-            this.nmNumberOfPeople.Size = new System.Drawing.Size(90, 26);
-            this.nmNumberOfPeople.TabIndex = 0;
-            this.nmNumberOfPeople.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.nmNumberOfPeople.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(13, 66);
+            this.label7.Location = new System.Drawing.Point(13, 14);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(68, 20);
             this.label7.TabIndex = 4;
@@ -182,14 +142,17 @@
             // 
             // txtNote
             // 
-            this.txtNote.Location = new System.Drawing.Point(17, 89);
+            this.txtNote.Location = new System.Drawing.Point(17, 37);
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
-            this.txtNote.Size = new System.Drawing.Size(564, 82);
+            this.txtNote.Size = new System.Drawing.Size(564, 134);
             this.txtNote.TabIndex = 2;
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.label20);
+            this.panel5.Controls.Add(this.txtHallNumberOfTables);
+            this.panel5.Controls.Add(this.btnDeleteHall);
             this.panel5.Controls.Add(this.label11);
             this.panel5.Controls.Add(this.label10);
             this.panel5.Controls.Add(this.label9);
@@ -203,6 +166,34 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(610, 200);
             this.panel5.TabIndex = 2;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(13, 146);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(107, 20);
+            this.label20.TabIndex = 14;
+            this.label20.Text = "Số bàn tối đa:";
+            // 
+            // txtHallNumberOfTables
+            // 
+            this.txtHallNumberOfTables.Location = new System.Drawing.Point(147, 143);
+            this.txtHallNumberOfTables.Name = "txtHallNumberOfTables";
+            this.txtHallNumberOfTables.ReadOnly = true;
+            this.txtHallNumberOfTables.Size = new System.Drawing.Size(89, 26);
+            this.txtHallNumberOfTables.TabIndex = 4;
+            this.txtHallNumberOfTables.TextChanged += new System.EventHandler(this.txtHallNumberOfTables_TextChanged);
+            // 
+            // btnDeleteHall
+            // 
+            this.btnDeleteHall.Location = new System.Drawing.Point(273, 136);
+            this.btnDeleteHall.Name = "btnDeleteHall";
+            this.btnDeleteHall.Size = new System.Drawing.Size(120, 40);
+            this.btnDeleteHall.TabIndex = 5;
+            this.btnDeleteHall.Text = "Xóa";
+            this.btnDeleteHall.UseVisualStyleBackColor = true;
+            this.btnDeleteHall.Click += new System.EventHandler(this.btnDeleteHall_Click);
             // 
             // label11
             // 
@@ -236,7 +227,7 @@
             this.btnSelectHall.Location = new System.Drawing.Point(440, 136);
             this.btnSelectHall.Name = "btnSelectHall";
             this.btnSelectHall.Size = new System.Drawing.Size(120, 40);
-            this.btnSelectHall.TabIndex = 4;
+            this.btnSelectHall.TabIndex = 6;
             this.btnSelectHall.Text = "Chọn";
             this.btnSelectHall.UseVisualStyleBackColor = true;
             this.btnSelectHall.Click += new System.EventHandler(this.btnSelectHall_Click);
@@ -289,6 +280,7 @@
             // panel4
             // 
             this.panel4.Controls.Add(this.txtCustomerPhone);
+            this.panel4.Controls.Add(this.ckbIsPaid);
             this.panel4.Controls.Add(this.txtCustomerName);
             this.panel4.Controls.Add(this.label2);
             this.panel4.Controls.Add(this.label1);
@@ -304,6 +296,16 @@
             this.txtCustomerPhone.ReadOnly = true;
             this.txtCustomerPhone.Size = new System.Drawing.Size(194, 26);
             this.txtCustomerPhone.TabIndex = 1;
+            // 
+            // ckbIsPaid
+            // 
+            this.ckbIsPaid.AutoSize = true;
+            this.ckbIsPaid.Location = new System.Drawing.Point(425, 55);
+            this.ckbIsPaid.Name = "ckbIsPaid";
+            this.ckbIsPaid.Size = new System.Drawing.Size(156, 24);
+            this.ckbIsPaid.TabIndex = 2;
+            this.ckbIsPaid.Text = "Thanh toán trước";
+            this.ckbIsPaid.UseVisualStyleBackColor = true;
             // 
             // txtCustomerName
             // 
@@ -336,6 +338,8 @@
             this.panel19.AccessibleDescription = "";
             this.panel19.AccessibleName = "";
             this.panel19.Controls.Add(this.label6);
+            this.panel19.Controls.Add(this.nmNumberOfTables);
+            this.panel19.Controls.Add(this.label18);
             this.panel19.Controls.Add(this.btnDeleteItem);
             this.panel19.Controls.Add(this.label5);
             this.panel19.Controls.Add(this.label4);
@@ -359,12 +363,45 @@
             this.label6.TabIndex = 8;
             this.label6.Text = "Số lượng:";
             // 
+            // nmNumberOfTables
+            // 
+            this.nmNumberOfTables.Location = new System.Drawing.Point(103, 139);
+            this.nmNumberOfTables.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
+            this.nmNumberOfTables.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nmNumberOfTables.Name = "nmNumberOfTables";
+            this.nmNumberOfTables.Size = new System.Drawing.Size(90, 26);
+            this.nmNumberOfTables.TabIndex = 4;
+            this.nmNumberOfTables.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.nmNumberOfTables.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nmNumberOfTables.ValueChanged += new System.EventHandler(this.nmNumberOfTable_ValueChanged);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(16, 141);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(64, 20);
+            this.label18.TabIndex = 10;
+            this.label18.Text = "Số bàn:";
+            // 
             // btnDeleteItem
             // 
             this.btnDeleteItem.Location = new System.Drawing.Point(276, 131);
             this.btnDeleteItem.Name = "btnDeleteItem";
             this.btnDeleteItem.Size = new System.Drawing.Size(120, 40);
-            this.btnDeleteItem.TabIndex = 4;
+            this.btnDeleteItem.TabIndex = 5;
             this.btnDeleteItem.Text = "Xóa";
             this.btnDeleteItem.UseVisualStyleBackColor = true;
             this.btnDeleteItem.Click += new System.EventHandler(this.btnDeleteItem_Click);
@@ -427,7 +464,7 @@
             this.btnAddItem.Location = new System.Drawing.Point(443, 131);
             this.btnAddItem.Name = "btnAddItem";
             this.btnAddItem.Size = new System.Drawing.Size(120, 40);
-            this.btnAddItem.TabIndex = 5;
+            this.btnAddItem.TabIndex = 6;
             this.btnAddItem.Text = "Thêm";
             this.btnAddItem.UseVisualStyleBackColor = true;
             this.btnAddItem.Click += new System.EventHandler(this.btnAddItem_Click);
@@ -451,6 +488,8 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.txtTotalPricePerTable);
+            this.panel2.Controls.Add(this.label19);
             this.panel2.Controls.Add(this.btnMomo);
             this.panel2.Controls.Add(this.label17);
             this.panel2.Controls.Add(this.txtSelectDate);
@@ -465,15 +504,42 @@
             this.panel2.Controls.Add(this.label12);
             this.panel2.Controls.Add(this.txtTotalPrice);
             this.panel2.Controls.Add(this.btnBooking);
-            this.panel2.Location = new System.Drawing.Point(626, 508);
+            this.panel2.Location = new System.Drawing.Point(626, 482);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(519, 209);
+            this.panel2.Size = new System.Drawing.Size(519, 235);
             this.panel2.TabIndex = 5;
+            // 
+            // txtTotalPricePerTable
+            // 
+            this.txtTotalPricePerTable.Location = new System.Drawing.Point(287, 8);
+            this.txtTotalPricePerTable.Name = "txtTotalPricePerTable";
+            this.txtTotalPricePerTable.ReadOnly = true;
+            this.txtTotalPricePerTable.Size = new System.Drawing.Size(174, 26);
+            this.txtTotalPricePerTable.TabIndex = 0;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(16, 11);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(252, 20);
+            this.label19.TabIndex = 19;
+            this.label19.Text = "Tiền các món ăn phục vụ mỗi bàn: ";
+            // 
+            // btnMomo
+            // 
+            this.btnMomo.Location = new System.Drawing.Point(287, 178);
+            this.btnMomo.Name = "btnMomo";
+            this.btnMomo.Size = new System.Drawing.Size(99, 40);
+            this.btnMomo.TabIndex = 7;
+            this.btnMomo.Text = "Momo";
+            this.btnMomo.UseVisualStyleBackColor = true;
+            this.btnMomo.Click += new System.EventHandler(this.btnMomo_Click);
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(16, 21);
+            this.label17.Location = new System.Drawing.Point(16, 61);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(49, 20);
             this.label17.TabIndex = 18;
@@ -481,16 +547,16 @@
             // 
             // txtSelectDate
             // 
-            this.txtSelectDate.Location = new System.Drawing.Point(89, 18);
+            this.txtSelectDate.Location = new System.Drawing.Point(89, 58);
             this.txtSelectDate.Name = "txtSelectDate";
             this.txtSelectDate.ReadOnly = true;
             this.txtSelectDate.Size = new System.Drawing.Size(137, 26);
-            this.txtSelectDate.TabIndex = 0;
+            this.txtSelectDate.TabIndex = 1;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(292, 76);
+            this.label16.Location = new System.Drawing.Point(292, 116);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(38, 20);
             this.label16.TabIndex = 14;
@@ -499,7 +565,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(297, 21);
+            this.label15.Location = new System.Drawing.Point(297, 61);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(33, 20);
             this.label15.TabIndex = 16;
@@ -507,24 +573,24 @@
             // 
             // txtSelectHallPrice
             // 
-            this.txtSelectHallPrice.Location = new System.Drawing.Point(354, 73);
+            this.txtSelectHallPrice.Location = new System.Drawing.Point(354, 113);
             this.txtSelectHallPrice.Name = "txtSelectHallPrice";
             this.txtSelectHallPrice.ReadOnly = true;
             this.txtSelectHallPrice.Size = new System.Drawing.Size(137, 26);
-            this.txtSelectHallPrice.TabIndex = 3;
+            this.txtSelectHallPrice.TabIndex = 4;
             // 
             // txtSelectShift
             // 
-            this.txtSelectShift.Location = new System.Drawing.Point(377, 18);
+            this.txtSelectShift.Location = new System.Drawing.Point(377, 58);
             this.txtSelectShift.Name = "txtSelectShift";
             this.txtSelectShift.ReadOnly = true;
             this.txtSelectShift.Size = new System.Drawing.Size(84, 26);
-            this.txtSelectShift.TabIndex = 1;
+            this.txtSelectShift.TabIndex = 2;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(16, 76);
+            this.label14.Location = new System.Drawing.Point(16, 116);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(51, 20);
             this.label14.TabIndex = 14;
@@ -533,7 +599,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(162, 137);
+            this.label13.Location = new System.Drawing.Point(162, 163);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(75, 20);
             this.label13.TabIndex = 14;
@@ -541,25 +607,25 @@
             // 
             // txtSelectHallName
             // 
-            this.txtSelectHallName.Location = new System.Drawing.Point(89, 73);
+            this.txtSelectHallName.Location = new System.Drawing.Point(89, 113);
             this.txtSelectHallName.Name = "txtSelectHallName";
             this.txtSelectHallName.ReadOnly = true;
             this.txtSelectHallName.Size = new System.Drawing.Size(137, 26);
-            this.txtSelectHallName.TabIndex = 2;
+            this.txtSelectHallName.TabIndex = 3;
             // 
             // nmDiscount
             // 
-            this.nmDiscount.Location = new System.Drawing.Point(20, 160);
+            this.nmDiscount.Location = new System.Drawing.Point(20, 186);
             this.nmDiscount.Name = "nmDiscount";
             this.nmDiscount.Size = new System.Drawing.Size(87, 26);
-            this.nmDiscount.TabIndex = 4;
+            this.nmDiscount.TabIndex = 5;
             this.nmDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nmDiscount.ValueChanged += new System.EventHandler(this.nmDiscount_ValueChanged);
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(26, 137);
+            this.label12.Location = new System.Drawing.Point(26, 163);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(72, 20);
             this.label12.TabIndex = 13;
@@ -567,18 +633,18 @@
             // 
             // txtTotalPrice
             // 
-            this.txtTotalPrice.Location = new System.Drawing.Point(122, 160);
+            this.txtTotalPrice.Location = new System.Drawing.Point(122, 186);
             this.txtTotalPrice.Name = "txtTotalPrice";
             this.txtTotalPrice.ReadOnly = true;
             this.txtTotalPrice.Size = new System.Drawing.Size(149, 26);
-            this.txtTotalPrice.TabIndex = 5;
+            this.txtTotalPrice.TabIndex = 6;
             // 
             // btnBooking
             // 
-            this.btnBooking.Location = new System.Drawing.Point(407, 152);
+            this.btnBooking.Location = new System.Drawing.Point(407, 178);
             this.btnBooking.Name = "btnBooking";
             this.btnBooking.Size = new System.Drawing.Size(99, 40);
-            this.btnBooking.TabIndex = 7;
+            this.btnBooking.TabIndex = 8;
             this.btnBooking.Text = "Đặt";
             this.btnBooking.UseVisualStyleBackColor = true;
             this.btnBooking.Click += new System.EventHandler(this.btnBooking_Click);
@@ -588,7 +654,7 @@
             this.panel26.Controls.Add(this.lsvBill);
             this.panel26.Location = new System.Drawing.Point(626, 6);
             this.panel26.Name = "panel26";
-            this.panel26.Size = new System.Drawing.Size(519, 496);
+            this.panel26.Size = new System.Drawing.Size(519, 470);
             this.panel26.TabIndex = 1;
             // 
             // lsvBill
@@ -602,7 +668,7 @@
             this.lsvBill.HideSelection = false;
             this.lsvBill.Location = new System.Drawing.Point(3, 3);
             this.lsvBill.Name = "lsvBill";
-            this.lsvBill.Size = new System.Drawing.Size(513, 490);
+            this.lsvBill.Size = new System.Drawing.Size(513, 464);
             this.lsvBill.TabIndex = 4;
             this.lsvBill.UseCompatibleStateImageBehavior = false;
             this.lsvBill.View = System.Windows.Forms.View.Details;
@@ -627,16 +693,6 @@
             this.columnHeader4.Text = "Thành tiền";
             this.columnHeader4.Width = 147;
             // 
-            // btnMomo
-            // 
-            this.btnMomo.Location = new System.Drawing.Point(287, 152);
-            this.btnMomo.Name = "btnMomo";
-            this.btnMomo.Size = new System.Drawing.Size(99, 40);
-            this.btnMomo.TabIndex = 6;
-            this.btnMomo.Text = "Momo";
-            this.btnMomo.UseVisualStyleBackColor = true;
-            this.btnMomo.Click += new System.EventHandler(this.btnMomo_Click);
-            // 
             // FrmBooking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -655,13 +711,13 @@
             this.panel3.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nmNumberOfPeople)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel19.ResumeLayout(false);
             this.panel19.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nmNumberOfTables)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmItemQuantity)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -725,8 +781,13 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox txtSelectDate;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.NumericUpDown nmNumberOfPeople;
+        private System.Windows.Forms.NumericUpDown nmNumberOfTables;
         private System.Windows.Forms.CheckBox ckbIsPaid;
         private System.Windows.Forms.Button btnMomo;
+        private System.Windows.Forms.Button btnDeleteHall;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox txtTotalPricePerTable;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox txtHallNumberOfTables;
     }
 }

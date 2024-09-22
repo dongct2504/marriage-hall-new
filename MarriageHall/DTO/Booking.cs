@@ -12,7 +12,7 @@ namespace MarriageHall.DTO
         public int HallId { get; set; }
         public StatusEnum Status { get; set; }
         public ShiftEnum Shift { get; set; }
-        public int NumberOfPeople { get; set; }
+        public int NumberOfTables { get; set; }
         public string Note { get; set; }
         public decimal Discount { get; set; }
         public decimal TotalPrice { get; set; }
@@ -33,7 +33,7 @@ namespace MarriageHall.DTO
             this.HallId = (int)row["HallId"];
             this.Status = (StatusEnum)int.Parse(row["Status"].ToString());
             this.Shift = (ShiftEnum)int.Parse(row["Shift"].ToString());
-            this.NumberOfPeople = int.Parse(row["NumberOfPeople"].ToString());
+            this.NumberOfTables = int.Parse(row["NumberOfTables"].ToString());
             this.Note = row["Note"].ToString();
             this.Discount = (decimal)row["Discount"];
             this.TotalPrice = (decimal)row["TotalPrice"];

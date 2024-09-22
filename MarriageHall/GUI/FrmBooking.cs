@@ -31,6 +31,8 @@ namespace MarriageHall.GUI
         }
 
         List<BookingDetail> bookingDetails = new List<BookingDetail>();
+        int numberOfTables = 1;
+        decimal totalPricePerTable = 0;
         decimal hallPrice = 0;
         decimal discount = 0;
         decimal totalPrice = 0;
@@ -48,7 +50,8 @@ namespace MarriageHall.GUI
             dtpkHallServiceDate.MinDate = DateTime.Today.AddDays(1);
             dtpkHallServiceDate.Value = DateTime.Today.AddDays(1); 
             nmDiscount.Value = discount;
-            txtSelectHallPrice.Text = totalPrice.ToString("c");
+            txtTotalPricePerTable.Text = totalPricePerTable.ToString("c");
+            txtSelectHallPrice.Text = hallPrice.ToString("c");
             txtTotalPrice.Text = hallPrice.ToString("c");
         }
 
@@ -87,7 +90,6 @@ namespace MarriageHall.GUI
                 listViewItem.SubItems.Add(bookingDetail.Price.ToString("c"));
                 listViewItem.SubItems.Add(bookingDetail.Quantity.ToString());
                 listViewItem.SubItems.Add(bookingDetail.TotalPrice.ToString("c"));
-                totalPrice += bookingDetail.TotalPrice;
                 lsvBill.Items.Add(listViewItem);
             }
             CalcTotalPrice();
@@ -128,8 +130,6 @@ namespace MarriageHall.GUI
             if (bookingDetails.Any(x => x.ItemId == itemId))
             {
                 var bookingDetail = bookingDetails.First(x => x.ItemId == itemId);
-                totalPrice -= bookingDetail.TotalPrice;
-                txtTotalPrice.Text = totalPrice.ToString("c");
                 bookingDetails.Remove(bookingDetail);
             }
             ShowBill() ;
@@ -137,14 +137,16 @@ namespace MarriageHall.GUI
 
         private void CalcTotalPrice()
         {
-            totalPrice = 0;
+            totalPricePerTable = 0;
             foreach (var bookingDetail in bookingDetails)
             {
-                totalPrice += bookingDetail.TotalPrice;
+                totalPricePerTable += bookingDetail.TotalPrice;
             }
+            totalPrice = totalPricePerTable * numberOfTables;
             totalPrice += hallPrice;
             totalPrice *= (1 - discount / 100);
 
+            txtTotalPricePerTable.Text = totalPricePerTable.ToString("c");
             txtTotalPrice.Text = totalPrice.ToString("c");
         }
 
@@ -161,6 +163,8 @@ namespace MarriageHall.GUI
             cboHall.DisplayMember = "Name";
             txtHallPrice.DataBindings.Clear();
             txtHallPrice.DataBindings.Add(new Binding("Text", cboHall.DataSource, "Price"));
+            txtHallNumberOfTables.DataBindings.Clear();
+            txtHallNumberOfTables.DataBindings.Add(new Binding("Text", cboHall.DataSource, "NumberOfTables"));
         }
 
         private void LoadListShift()
@@ -206,6 +210,11 @@ namespace MarriageHall.GUI
             CalcTotalPrice();
         }
 
+        private void txtHallNumberOfTables_TextChanged(object sender, EventArgs e)
+        {
+            nmNumberOfTables.Maximum = int.Parse(txtHallNumberOfTables.Text);
+        }
+
         private void nmDiscount_ValueChanged(object sender, EventArgs e)
         {
             discount = nmDiscount.Value;
@@ -223,7 +232,7 @@ namespace MarriageHall.GUI
             }
             booking.CustomerId = Customer.Id;
             booking.StaffId = LoginAccount.Id;
-            booking.NumberOfPeople = (int)nmNumberOfPeople.Value;
+            booking.NumberOfTables = (int)nmNumberOfTables.Value;
             booking.Note = txtNote.Text;
             booking.Discount = discount;
             booking.TotalPrice = totalPrice;
@@ -297,6 +306,23 @@ namespace MarriageHall.GUI
             g.InterpolationMode = InterpolationMode.High;
             g.DrawImage(image, 0, 0, new_width, new_height);
             return new_image;
+        }
+
+        private void nmNumberOfTable_ValueChanged(object sender, EventArgs e)
+        {
+            numberOfTables = (int)nmNumberOfTables.Value;
+            CalcTotalPrice();
+        }
+
+        private void btnDeleteHall_Click(object sender, EventArgs e)
+        {
+            hallPrice = 0;
+            txtSelectDate.Clear();
+            txtSelectShift.Clear();
+            txtSelectHallName.Clear();
+            txtSelectHallPrice.Text = hallPrice.ToString("c");
+
+            CalcTotalPrice();
         }
     }
 }
